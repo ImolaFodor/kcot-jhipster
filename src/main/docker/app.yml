@@ -1,0 +1,15 @@
+version: '2'
+services:
+    kcot-app:
+        image: kcot
+        external_links:
+            - kcot-mysql:mysql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/kcot?useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+    kcot-mysql:
+        extends:
+            file: mysql.yml
+            service: kcot-mysql

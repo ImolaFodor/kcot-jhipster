@@ -1,0 +1,98 @@
+<div>
+    <h2>U Galerijis</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="u-galeriji.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new U Galeriji
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="naziv"><span>Naziv</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datum"><span>Datum</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="poslovna_godina"><span translate="kcotApp.uGaleriji.poslovna_godina">Poslovna Godina</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="kontakt_ime"><span translate="kcotApp.uGaleriji.kontakt_ime">Kontakt Ime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="kontakt_prz"><span translate="kcotApp.uGaleriji.kontakt_prz">Kontakt Prz</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="kontakt_broj"><span translate="kcotApp.uGaleriji.kontakt_broj">Kontakt Broj</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="kontakt_email"><span translate="kcotApp.uGaleriji.kontakt_email">Kontakt Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="moderator_ime"><span translate="kcotApp.uGaleriji.moderator_ime">Moderator Ime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="moderator_prz"><span translate="kcotApp.uGaleriji.moderator_prz">Moderator Prz</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="moderator_broj"><span translate="kcotApp.uGaleriji.moderator_broj">Moderator Broj</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trosak"><span>Trosak</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="unajmio_ime"><span translate="kcotApp.uGaleriji.unajmio_ime">Unajmio Ime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="unajmio_prz"><span translate="kcotApp.uGaleriji.unajmio_prz">Unajmio Prz</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="unajmio_email"><span translate="kcotApp.uGaleriji.unajmio_email">Unajmio Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="br_fakture"><span translate="kcotApp.uGaleriji.br_fakture">Br Fakture</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="zarada"><span>Zarada</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="posecenost"><span>Posecenost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tip"><span>Tip</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="napomene"><span>Napomene</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="uGaleriji in vm.uGalerijis track by uGaleriji.id">
+                    <td><a ui-sref="u-galeriji-detail({id:uGaleriji.id})">{{uGaleriji.id}}</a></td>
+                    <td>{{uGaleriji.naziv}}</td>
+                        <td>{{uGaleriji.datum | date:'mediumDate'}}</td>
+                    <td>{{uGaleriji.poslovna_godina}}</td>
+                    <td>{{uGaleriji.kontakt_ime}}</td>
+                    <td>{{uGaleriji.kontakt_prz}}</td>
+                    <td>{{uGaleriji.kontakt_broj}}</td>
+                    <td>{{uGaleriji.kontakt_email}}</td>
+                    <td translate="{{'kcotApp.Status.' + uGaleriji.status}}">{{uGaleriji.status}}</td>
+                    <td>{{uGaleriji.moderator_ime}}</td>
+                    <td>{{uGaleriji.moderator_prz}}</td>
+                    <td>{{uGaleriji.moderator_broj}}</td>
+                    <td>{{uGaleriji.trosak}}</td>
+                    <td>{{uGaleriji.unajmio_ime}}</td>
+                    <td>{{uGaleriji.unajmio_prz}}</td>
+                    <td>{{uGaleriji.unajmio_email}}</td>
+                    <td>{{uGaleriji.br_fakture}}</td>
+                    <td>{{uGaleriji.zarada}}</td>
+                    <td>{{uGaleriji.posecenost}}</td>
+                    <td translate="{{'kcotApp.Tip.' + uGaleriji.tip}}">{{uGaleriji.tip}}</td>
+                    <td>{{uGaleriji.napomene}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="u-galeriji-detail({id:uGaleriji.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="u-galeriji.edit({id:uGaleriji.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="u-galeriji.delete({id:uGaleriji.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

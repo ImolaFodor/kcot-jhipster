@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity RezervacijaProdaja.
+    -->
+    <changeSet id="20160525115106-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="rezervacija_prodajas_id"
+                                 baseTableName="rezervacija_prodaja_gost"
+                                 constraintName="fk_rezervacija_prodaja_gost_gost_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rezervacija_prodaja"/>
+        <addForeignKeyConstraint baseColumnNames="gosts_id"
+                                 baseTableName="rezervacija_prodaja_gost"
+                                 constraintName="fk_rezervacija_prodaja_gost_rezervacijaprodaja_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gost"/>
+        
+        <addForeignKeyConstraint baseColumnNames="skola_id"
+                                 baseTableName="rezervacija_prodaja"
+                                 constraintName="fk_rezervacijaprodaja_skola_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="skola"/>
+
+        <addForeignKeyConstraint baseColumnNames="u_sali_id"
+                                 baseTableName="rezervacija_prodaja"
+                                 constraintName="fk_rezervacijaprodaja_usali_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="u_sali"/>
+
+        <addForeignKeyConstraint baseColumnNames="obavio_rez_id"
+                                 baseTableName="rezervacija_prodaja"
+                                 constraintName="fk_rezervacijaprodaja_obavio_rez_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zaposleni"/>
+
+        <addForeignKeyConstraint baseColumnNames="obavio_prodaju_id"
+                                 baseTableName="rezervacija_prodaja"
+                                 constraintName="fk_rezervacijaprodaja_obavio_prodaju_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zaposleni"/>
+
+    </changeSet>
+</databaseChangeLog>

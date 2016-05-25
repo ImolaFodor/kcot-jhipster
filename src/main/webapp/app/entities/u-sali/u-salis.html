@@ -1,0 +1,88 @@
+<div>
+    <h2>U Salis</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="u-sali.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new U Sali
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="naziv"><span>Naziv</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datum"><span>Datum</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="poslovna_godina"><span translate="kcotApp.uSali.poslovna_godina">Poslovna Godina</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="kontakt_ime"><span translate="kcotApp.uSali.kontakt_ime">Kontakt Ime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="kontakt_prz"><span translate="kcotApp.uSali.kontakt_prz">Kontakt Prz</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="kontakt_broj"><span translate="kcotApp.uSali.kontakt_broj">Kontakt Broj</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="kontakt_email"><span translate="kcotApp.uSali.kontakt_email">Kontakt Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="zarada"><span>Zarada</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prihod"><span>Prihod</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="procenat"><span>Procenat</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="posecenost"><span>Posecenost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="titl"><span>Titl</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="oprema"><span>Oprema</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="napomene"><span>Napomene</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="uSali in vm.uSalis track by uSali.id">
+                    <td><a ui-sref="u-sali-detail({id:uSali.id})">{{uSali.id}}</a></td>
+                    <td>{{uSali.naziv}}</td>
+                        <td>{{uSali.datum | date:'mediumDate'}}</td>
+                    <td>{{uSali.poslovna_godina}}</td>
+                    <td>{{uSali.kontakt_ime}}</td>
+                    <td>{{uSali.kontakt_prz}}</td>
+                    <td>{{uSali.kontakt_broj}}</td>
+                    <td>{{uSali.kontakt_email}}</td>
+                    <td translate="{{'kcotApp.Status.' + uSali.status}}">{{uSali.status}}</td>
+                    <td>{{uSali.zarada}}</td>
+                    <td>{{uSali.prihod}}</td>
+                    <td>{{uSali.procenat}}</td>
+                    <td>{{uSali.posecenost}}</td>
+                    <td>{{uSali.titl}}</td>
+                    <td>{{uSali.oprema}}</td>
+                    <td>{{uSali.napomene}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="u-sali-detail({id:uSali.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="u-sali.edit({id:uSali.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="u-sali.delete({id:uSali.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

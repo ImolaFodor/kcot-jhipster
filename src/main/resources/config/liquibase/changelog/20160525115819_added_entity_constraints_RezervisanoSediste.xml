@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity RezervisanoSediste.
+    -->
+    <changeSet id="20160525115819-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="sediste_id"
+                                 baseTableName="rezervisano_sediste"
+                                 constraintName="fk_rezervisanosediste_sediste_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sediste"/>
+
+        <addForeignKeyConstraint baseColumnNames="rezervacija_prodaja_id"
+                                 baseTableName="rezervisano_sediste"
+                                 constraintName="fk_rezervisanosediste_rezervacijaprodaja_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rezervacija_prodaja"/>
+
+    </changeSet>
+</databaseChangeLog>

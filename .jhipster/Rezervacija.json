@@ -1,0 +1,14 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "ups",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160525113731",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "rezervacija",
+    "pagination": "pager"
+}

@@ -1,0 +1,72 @@
+<div>
+    <h2 translate="kcotApp.donirana_dela.home.title">Donirana Delas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="donirana-dela.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="kcotApp.donirana_dela.home.createLabel">
+                        Create new Donirana Dela
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="naziv"><span translate="kcotApp.donirana_dela.naziv">Naziv</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="br_ugovora"><span translate="kcotApp.donirana_dela.br_ugovora">Br Ugovora</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="opis"><span translate="kcotApp.donirana_dela.opis">Opis</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="umetnickoDelo.naziv"><span translate="kcotApp.donirana_dela.umetnickoDelo">Umetnicko Delo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="uGaleriji.naziv"><span translate="kcotApp.donirana_dela.uGaleriji">U Galeriji</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="donirana_dela in vm.donirana_delas track by donirana_dela.id">
+                    <td><a ui-sref="donirana-dela-detail({id:donirana_dela.id})">{{donirana_dela.id}}</a></td>
+                    <td>{{donirana_dela.naziv}}</td>
+                    <td>{{donirana_dela.br_ugovora}}</td>
+                    <td>{{donirana_dela.opis}}</td>
+                    <td>
+                        <a ui-sref="umetnicko-delo-detail({id:donirana_dela.umetnickoDelo.id})">{{donirana_dela.umetnickoDelo.naziv}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="u-galeriji-detail({id:donirana_dela.uGaleriji.id})">{{donirana_dela.uGaleriji.naziv}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="donirana-dela-detail({id:donirana_dela.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="donirana-dela.edit({id:donirana_dela.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="donirana-dela.delete({id:donirana_dela.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

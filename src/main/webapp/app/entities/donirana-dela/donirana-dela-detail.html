@@ -1,0 +1,34 @@
+
+<div>
+    <h2><span translate="kcotApp.donirana_dela.detail.title">Donirana Dela</span> {{vm.donirana_dela.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="kcotApp.donirana_dela.naziv">Naziv</span></dt>
+        <dd>
+            <span>{{vm.donirana_dela.naziv}}</span>
+        </dd>
+        <dt><span translate="kcotApp.donirana_dela.br_ugovora">Br Ugovora</span></dt>
+        <dd>
+            <span>{{vm.donirana_dela.br_ugovora}}</span>
+        </dd>
+        <dt><span translate="kcotApp.donirana_dela.opis">Opis</span></dt>
+        <dd>
+            <span>{{vm.donirana_dela.opis}}</span>
+        </dd>
+        <dt><span translate="kcotApp.donirana_dela.umetnickoDelo">Umetnicko Delo</span></dt>
+        <dd>
+            <a ui-sref="umetnicko-delo-detail({id:vm.donirana_dela.umetnickoDelo.id})">{{vm.donirana_dela.umetnickoDelo.naziv}}</a>
+        </dd>
+        <dt><span translate="kcotApp.donirana_dela.uGaleriji">U Galeriji</span></dt>
+        <dd>
+            <a ui-sref="u-galeriji-detail({id:vm.donirana_dela.uGaleriji.id})">{{vm.donirana_dela.uGaleriji.naziv}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

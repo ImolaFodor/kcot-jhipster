@@ -1,0 +1,18 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "id_prodatog",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "iznos",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20160525115958",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "dnevni_pazar",
+    "pagination": "pager"
+}

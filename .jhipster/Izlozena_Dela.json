@@ -1,0 +1,37 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "umetnickoDelo",
+            "otherEntityName": "umetnickoDelo",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "naziv"
+        },
+        {
+            "relationshipName": "uGaleriji",
+            "otherEntityName": "uGaleriji",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "naziv"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "naziv",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "opis",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20160525104205",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "izlozena_dela",
+    "pagination": "pager"
+}

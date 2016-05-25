@@ -1,0 +1,34 @@
+
+<div>
+    <h2><span>Umetnicko Delo</span> {{vm.umetnickoDelo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Naziv</span></dt>
+        <dd>
+            <span>{{vm.umetnickoDelo.naziv}}</span>
+        </dd>
+        <dt><span translate="kcotApp.umetnickoDelo.umetnik_ime">Umetnik Ime</span></dt>
+        <dd>
+            <span>{{vm.umetnickoDelo.umetnik_ime}}</span>
+        </dd>
+        <dt><span translate="kcotApp.umetnickoDelo.umetnik_prz">Umetnik Prz</span></dt>
+        <dd>
+            <span>{{vm.umetnickoDelo.umetnik_prz}}</span>
+        </dd>
+        <dt><span translate="kcotApp.umetnickoDelo.inventarski_broj">Inventarski Broj</span></dt>
+        <dd>
+            <span>{{vm.umetnickoDelo.inventarski_broj}}</span>
+        </dd>
+        <dt><span translate="kcotApp.umetnickoDelo.tip_um_dela">Tip Um Dela</span></dt>
+        <dd>
+            <span translate="{{'kcotApp.TipUmDela.' + vm.umetnickoDelo.tip_um_dela}}">{{vm.umetnickoDelo.tip_um_dela}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

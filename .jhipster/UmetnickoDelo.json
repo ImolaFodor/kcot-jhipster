@@ -1,0 +1,50 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "donirana_dela",
+            "otherEntityName": "donirana_dela",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "umetnickoDelo"
+        },
+        {
+            "relationshipName": "izlozena_dela",
+            "otherEntityName": "izlozena_dela",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "umetnickoDelo"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "naziv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "umetnik_ime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "umetnik_prz",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "inventarski_broj",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tip_um_dela",
+            "fieldType": "TipUmDela",
+            "fieldValues": "MAGACIN, SVOJINA",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160525101441",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "umetnicko_delo",
+    "pagination": "pager"
+}

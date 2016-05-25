@@ -1,0 +1,68 @@
+<div>
+    <h2>Umetnicko Delos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="umetnicko-delo.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Umetnicko Delo
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="naziv"><span>Naziv</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="umetnik_ime"><span translate="kcotApp.umetnickoDelo.umetnik_ime">Umetnik Ime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="umetnik_prz"><span translate="kcotApp.umetnickoDelo.umetnik_prz">Umetnik Prz</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="inventarski_broj"><span translate="kcotApp.umetnickoDelo.inventarski_broj">Inventarski Broj</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tip_um_dela"><span translate="kcotApp.umetnickoDelo.tip_um_dela">Tip Um Dela</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="umetnickoDelo in vm.umetnickoDelos track by umetnickoDelo.id">
+                    <td><a ui-sref="umetnicko-delo-detail({id:umetnickoDelo.id})">{{umetnickoDelo.id}}</a></td>
+                    <td>{{umetnickoDelo.naziv}}</td>
+                    <td>{{umetnickoDelo.umetnik_ime}}</td>
+                    <td>{{umetnickoDelo.umetnik_prz}}</td>
+                    <td>{{umetnickoDelo.inventarski_broj}}</td>
+                    <td translate="{{'kcotApp.TipUmDela.' + umetnickoDelo.tip_um_dela}}">{{umetnickoDelo.tip_um_dela}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="umetnicko-delo-detail({id:umetnickoDelo.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="umetnicko-delo.edit({id:umetnickoDelo.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="umetnicko-delo.delete({id:umetnickoDelo.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

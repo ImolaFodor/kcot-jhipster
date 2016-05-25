@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Izlozena_dela.
+    -->
+    <changeSet id="20160525104205-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="umetnicko_delo_id"
+                                 baseTableName="izlozena_dela"
+                                 constraintName="fk_izlozena_dela_umetnickodelo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="umetnicko_delo"/>
+
+        <addForeignKeyConstraint baseColumnNames="u_galeriji_id"
+                                 baseTableName="izlozena_dela"
+                                 constraintName="fk_izlozena_dela_ugaleriji_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="u_galeriji"/>
+
+    </changeSet>
+</databaseChangeLog>

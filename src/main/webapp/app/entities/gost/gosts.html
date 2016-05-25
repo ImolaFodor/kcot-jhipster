@@ -1,0 +1,70 @@
+<div>
+    <h2>Gosts</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="gost.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Gost
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ime"><span>Ime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prz"><span>Prz</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="broj"><span>Broj</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email"><span>Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="adresa"><span>Adresa</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tip_gost"><span translate="kcotApp.gost.tip_gost">Tip Gost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="gost in vm.gosts track by gost.id">
+                    <td><a ui-sref="gost-detail({id:gost.id})">{{gost.id}}</a></td>
+                    <td>{{gost.ime}}</td>
+                    <td>{{gost.prz}}</td>
+                    <td>{{gost.broj}}</td>
+                    <td>{{gost.email}}</td>
+                    <td>{{gost.adresa}}</td>
+                    <td translate="{{'kcotApp.TipGost.' + gost.tip_gost}}">{{gost.tip_gost}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="gost-detail({id:gost.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="gost.edit({id:gost.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="gost.delete({id:gost.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

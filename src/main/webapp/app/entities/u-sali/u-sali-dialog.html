@@ -1,0 +1,143 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUSaliLabel">Create or edit a U Sali</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.uSali.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.uSali.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_naziv">Naziv</label>
+            <input type="text" class="form-control" name="naziv" id="field_naziv"
+                    ng-model="vm.uSali.naziv"
+                    required />
+            <div ng-show="editForm.naziv.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.naziv.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_datum">Datum</label>
+                <div class="input-group">
+                    <input id="field_datum" type="text" class="form-control" name="datum" uib-datepicker-popup="{{dateformat}}" ng-model="vm.uSali.datum" is-open="vm.datePickerOpenStatus.datum"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datum')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kcotApp.uSali.poslovna_godina" for="field_poslovna_godina">Poslovna Godina</label>
+            <input type="number" class="form-control" name="poslovna_godina" id="field_poslovna_godina"
+                    ng-model="vm.uSali.poslovna_godina"
+                    required />
+            <div ng-show="editForm.poslovna_godina.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.poslovna_godina.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.poslovna_godina.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kcotApp.uSali.kontakt_ime" for="field_kontakt_ime">Kontakt Ime</label>
+            <input type="text" class="form-control" name="kontakt_ime" id="field_kontakt_ime"
+                    ng-model="vm.uSali.kontakt_ime"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kcotApp.uSali.kontakt_prz" for="field_kontakt_prz">Kontakt Prz</label>
+            <input type="text" class="form-control" name="kontakt_prz" id="field_kontakt_prz"
+                    ng-model="vm.uSali.kontakt_prz"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kcotApp.uSali.kontakt_broj" for="field_kontakt_broj">Kontakt Broj</label>
+            <input type="number" class="form-control" name="kontakt_broj" id="field_kontakt_broj"
+                    ng-model="vm.uSali.kontakt_broj"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kcotApp.uSali.kontakt_email" for="field_kontakt_email">Kontakt Email</label>
+            <input type="text" class="form-control" name="kontakt_email" id="field_kontakt_email"
+                    ng-model="vm.uSali.kontakt_email"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.uSali.status" id="field_status" required>
+                <option value="REALIZOVANO">REALIZOVANO</option>
+                <option value="U_PLANU" translate="kcotApp.Status.U_PLANU">U_PLANU</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_zarada">Zarada</label>
+            <input type="number" class="form-control" name="zarada" id="field_zarada"
+                    ng-model="vm.uSali.zarada"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_prihod">Prihod</label>
+            <input type="number" class="form-control" name="prihod" id="field_prihod"
+                    ng-model="vm.uSali.prihod"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_procenat">Procenat</label>
+            <input type="number" class="form-control" name="procenat" id="field_procenat"
+                    ng-model="vm.uSali.procenat"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_posecenost">Posecenost</label>
+            <input type="number" class="form-control" name="posecenost" id="field_posecenost"
+                    ng-model="vm.uSali.posecenost"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_titl">Titl</label>
+            <input type="checkbox" class="form-control" name="titl" id="field_titl"
+                    ng-model="vm.uSali.titl"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_oprema">Oprema</label>
+            <input type="checkbox" class="form-control" name="oprema" id="field_oprema"
+                    ng-model="vm.uSali.oprema"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_napomene">Napomene</label>
+            <input type="number" class="form-control" name="napomene" id="field_napomene"
+                    ng-model="vm.uSali.napomene"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,58 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "pozvani",
+            "otherEntityName": "pozvani",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "gost"
+        },
+        {
+            "relationshipName": "rezervacijaProdaja",
+            "otherEntityName": "rezervacijaProdaja",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "gost"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "ime",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prz",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "broj",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adresa",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tip_gost",
+            "fieldType": "TipGost",
+            "fieldValues": "VIP, GRADJANIN",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160525110438",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "gost",
+    "pagination": "pager"
+}

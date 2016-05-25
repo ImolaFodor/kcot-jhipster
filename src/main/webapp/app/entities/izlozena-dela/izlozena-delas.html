@@ -1,0 +1,70 @@
+<div>
+    <h2 translate="kcotApp.izlozena_dela.home.title">Izlozena Delas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="izlozena-dela.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="kcotApp.izlozena_dela.home.createLabel">
+                        Create new Izlozena Dela
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="naziv"><span translate="kcotApp.izlozena_dela.naziv">Naziv</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="opis"><span translate="kcotApp.izlozena_dela.opis">Opis</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="umetnickoDelo.naziv"><span translate="kcotApp.izlozena_dela.umetnickoDelo">Umetnicko Delo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="uGaleriji.naziv"><span translate="kcotApp.izlozena_dela.uGaleriji">U Galeriji</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="izlozena_dela in vm.izlozena_delas track by izlozena_dela.id">
+                    <td><a ui-sref="izlozena-dela-detail({id:izlozena_dela.id})">{{izlozena_dela.id}}</a></td>
+                    <td>{{izlozena_dela.naziv}}</td>
+                    <td>{{izlozena_dela.opis}}</td>
+                    <td>
+                        <a ui-sref="umetnicko-delo-detail({id:izlozena_dela.umetnickoDelo.id})">{{izlozena_dela.umetnickoDelo.naziv}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="u-galeriji-detail({id:izlozena_dela.uGaleriji.id})">{{izlozena_dela.uGaleriji.naziv}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="izlozena-dela-detail({id:izlozena_dela.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="izlozena-dela.edit({id:izlozena_dela.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="izlozena-dela.delete({id:izlozena_dela.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

@@ -1,0 +1,85 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "gost",
+            "otherEntityName": "gost",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "ime",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "skola",
+            "otherEntityName": "skola",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "naziv"
+        },
+        {
+            "relationshipName": "uSali",
+            "otherEntityName": "uSali",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "naziv"
+        },
+        {
+            "relationshipName": "obavio_rez",
+            "otherEntityName": "zaposleni",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "ime"
+        },
+        {
+            "relationshipName": "obavio_prodaju",
+            "otherEntityName": "zaposleni",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "ime"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "rezervisao_ime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cena",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "broj_karata",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "br_male_dece",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "br_velike_dece",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "firma",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "aktivna_rez",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "opis",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "status_rez_prod",
+            "fieldType": "StatusRezProd",
+            "fieldValues": "REZERVISANO, PRODATO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160525115106",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "rezervacija_prodaja",
+    "pagination": "pager"
+}

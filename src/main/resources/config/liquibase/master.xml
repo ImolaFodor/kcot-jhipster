@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525101441_added_entity_UmetnickoDelo.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525103641_added_entity_UGaleriji.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525104205_added_entity_Izlozena_Dela.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525104205_added_entity_Izlozena_dela.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525105327_added_entity_Donirana_dela.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525110438_added_entity_Gost.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525110948_added_entity_Pozvani.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525111900_added_entity_USali.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525112551_added_entity_Zaposleni.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525112850_added_entity_Skola.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525113444_added_entity_Sediste.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525113731_added_entity_Rezervacija.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525115106_added_entity_RezervacijaProdaja.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525115819_added_entity_RezervisanoSediste.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525115958_added_entity_DnevniPazar.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20160525104205_added_entity_constraints_Izlozena_dela.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525105327_added_entity_constraints_Donirana_dela.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525110948_added_entity_constraints_Pozvani.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525115106_added_entity_constraints_RezervacijaProdaja.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160525115819_added_entity_constraints_RezervisanoSediste.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

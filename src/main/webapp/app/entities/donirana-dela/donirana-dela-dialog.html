@@ -1,0 +1,68 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myDonirana_delaLabel" translate="kcotApp.donirana_dela.home.createOrEditLabel">Create or edit a Donirana Dela</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.donirana_dela.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.donirana_dela.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kcotApp.donirana_dela.naziv" for="field_naziv">Naziv</label>
+            <input type="text" class="form-control" name="naziv" id="field_naziv"
+                    ng-model="vm.donirana_dela.naziv"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kcotApp.donirana_dela.br_ugovora" for="field_br_ugovora">Br Ugovora</label>
+            <input type="text" class="form-control" name="br_ugovora" id="field_br_ugovora"
+                    ng-model="vm.donirana_dela.br_ugovora"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kcotApp.donirana_dela.opis" for="field_opis">Opis</label>
+            <input type="number" class="form-control" name="opis" id="field_opis"
+                    ng-model="vm.donirana_dela.opis"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="kcotApp.donirana_dela.umetnickoDelo" for="field_umetnickoDelo">Umetnicko Delo</label>
+            <select class="form-control" id="field_umetnickoDelo" name="umetnickoDelo" ng-model="vm.donirana_dela.umetnickoDelo" ng-options="umetnickoDelo as umetnickoDelo.naziv for umetnickoDelo in vm.umetnickodelos track by umetnickoDelo.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.umetnickoDelo.$invalid">
+            <p class="help-block"
+                ng-show="editForm.umetnickoDelo.$error.required">
+                This field is required.
+            </p>
+        </div>
+        <div class="form-group">
+            <label translate="kcotApp.donirana_dela.uGaleriji" for="field_uGaleriji">U Galeriji</label>
+            <select class="form-control" id="field_uGaleriji" name="uGaleriji" ng-model="vm.donirana_dela.uGaleriji" ng-options="uGaleriji as uGaleriji.naziv for uGaleriji in vm.ugalerijis track by uGaleriji.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.uGaleriji.$invalid">
+            <p class="help-block"
+                ng-show="editForm.uGaleriji.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

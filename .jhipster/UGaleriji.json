@@ -1,0 +1,123 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "izlozena_dela",
+            "otherEntityName": "izlozena_dela",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "uGaleriji"
+        },
+        {
+            "relationshipName": "donirana_dela",
+            "otherEntityName": "donirana_dela",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "uGaleriji"
+        },
+        {
+            "relationshipName": "pozvani",
+            "otherEntityName": "pozvani",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "uGaleriji"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "naziv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "datum",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "poslovna_godina",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "kontakt_ime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kontakt_prz",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kontakt_broj",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "kontakt_email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "REALIZOVANO, U_PLANU",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "moderator_ime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "moderator_prz",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "moderator_broj",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "trosak",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "unajmio_ime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unajmio_prz",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unajmio_email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "br_fakture",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "zarada",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "posecenost",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tip",
+            "fieldType": "Tip",
+            "fieldValues": "IZLOZBA, KNJIZEVNO_PROMOCIJA, NAJAM, PRODAJA, OSTALO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "napomene",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20160525103641",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "u_galeriji",
+    "pagination": "pager"
+}

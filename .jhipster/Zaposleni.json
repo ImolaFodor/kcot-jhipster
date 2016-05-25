@@ -1,0 +1,53 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "obavio_rez",
+            "otherEntityName": "rezervacijaProdaja",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "obavio_rez"
+        },
+        {
+            "relationshipName": "obavio_prodaju",
+            "otherEntityName": "rezervacijaProdaja",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "obavio_prodaju"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "ime",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prz",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "korisnicko_ime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lozinka",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tip",
+            "fieldType": "Tip",
+            "fieldValues": "ORGANIZATOR, ZAPOSLEN,DIREKTOR",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160525112551",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "zaposleni",
+    "pagination": "pager"
+}

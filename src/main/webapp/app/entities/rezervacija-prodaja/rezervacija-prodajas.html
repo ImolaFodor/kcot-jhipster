@@ -1,0 +1,92 @@
+<div>
+    <h2>Rezervacija Prodajas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="rezervacija-prodaja.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Rezervacija Prodaja
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rezervisao_ime"><span translate="kcotApp.rezervacijaProdaja.rezervisao_ime">Rezervisao Ime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cena"><span>Cena</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="broj_karata"><span translate="kcotApp.rezervacijaProdaja.broj_karata">Broj Karata</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="br_male_dece"><span translate="kcotApp.rezervacijaProdaja.br_male_dece">Br Male Dece</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="br_velike_dece"><span translate="kcotApp.rezervacijaProdaja.br_velike_dece">Br Velike Dece</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="firma"><span>Firma</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="aktivna_rez"><span translate="kcotApp.rezervacijaProdaja.aktivna_rez">Aktivna Rez</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="opis"><span>Opis</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status_rez_prod"><span translate="kcotApp.rezervacijaProdaja.status_rez_prod">Status Rez Prod</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="skola.naziv"><span>Skola</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="uSali.naziv"><span>U Sali</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="obavio_rez.ime"><span translate="kcotApp.rezervacijaProdaja.obavio_rez">Obavio Rez</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="obavio_prodaju.ime"><span translate="kcotApp.rezervacijaProdaja.obavio_prodaju">Obavio Prodaju</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="rezervacijaProdaja in vm.rezervacijaProdajas track by rezervacijaProdaja.id">
+                    <td><a ui-sref="rezervacija-prodaja-detail({id:rezervacijaProdaja.id})">{{rezervacijaProdaja.id}}</a></td>
+                    <td>{{rezervacijaProdaja.rezervisao_ime}}</td>
+                    <td>{{rezervacijaProdaja.cena}}</td>
+                    <td>{{rezervacijaProdaja.broj_karata}}</td>
+                    <td>{{rezervacijaProdaja.br_male_dece}}</td>
+                    <td>{{rezervacijaProdaja.br_velike_dece}}</td>
+                    <td>{{rezervacijaProdaja.firma}}</td>
+                    <td>{{rezervacijaProdaja.aktivna_rez}}</td>
+                    <td>{{rezervacijaProdaja.opis}}</td>
+                    <td translate="{{'kcotApp.StatusRezProd.' + rezervacijaProdaja.status_rez_prod}}">{{rezervacijaProdaja.status_rez_prod}}</td>
+                    <td>
+                        <a ui-sref="skola-detail({id:rezervacijaProdaja.skola.id})">{{rezervacijaProdaja.skola.naziv}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="u-sali-detail({id:rezervacijaProdaja.uSali.id})">{{rezervacijaProdaja.uSali.naziv}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="zaposleni-detail({id:rezervacijaProdaja.obavio_rez.id})">{{rezervacijaProdaja.obavio_rez.ime}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="zaposleni-detail({id:rezervacijaProdaja.obavio_prodaju.id})">{{rezervacijaProdaja.obavio_prodaju.ime}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="rezervacija-prodaja-detail({id:rezervacijaProdaja.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="rezervacija-prodaja.edit({id:rezervacijaProdaja.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="rezervacija-prodaja.delete({id:rezervacijaProdaja.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

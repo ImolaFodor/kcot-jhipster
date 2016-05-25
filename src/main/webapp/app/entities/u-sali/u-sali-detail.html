@@ -1,0 +1,74 @@
+
+<div>
+    <h2><span>U Sali</span> {{vm.uSali.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Naziv</span></dt>
+        <dd>
+            <span>{{vm.uSali.naziv}}</span>
+        </dd>
+        <dt><span>Datum</span></dt>
+        <dd>
+            <span>{{vm.uSali.datum | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uSali.poslovna_godina">Poslovna Godina</span></dt>
+        <dd>
+            <span>{{vm.uSali.poslovna_godina}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uSali.kontakt_ime">Kontakt Ime</span></dt>
+        <dd>
+            <span>{{vm.uSali.kontakt_ime}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uSali.kontakt_prz">Kontakt Prz</span></dt>
+        <dd>
+            <span>{{vm.uSali.kontakt_prz}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uSali.kontakt_broj">Kontakt Broj</span></dt>
+        <dd>
+            <span>{{vm.uSali.kontakt_broj}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uSali.kontakt_email">Kontakt Email</span></dt>
+        <dd>
+            <span>{{vm.uSali.kontakt_email}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span translate="{{'kcotApp.Status.' + vm.uSali.status}}">{{vm.uSali.status}}</span>
+        </dd>
+        <dt><span>Zarada</span></dt>
+        <dd>
+            <span>{{vm.uSali.zarada}}</span>
+        </dd>
+        <dt><span>Prihod</span></dt>
+        <dd>
+            <span>{{vm.uSali.prihod}}</span>
+        </dd>
+        <dt><span>Procenat</span></dt>
+        <dd>
+            <span>{{vm.uSali.procenat}}</span>
+        </dd>
+        <dt><span>Posecenost</span></dt>
+        <dd>
+            <span>{{vm.uSali.posecenost}}</span>
+        </dd>
+        <dt><span>Titl</span></dt>
+        <dd>
+            <span>{{vm.uSali.titl}}</span>
+        </dd>
+        <dt><span>Oprema</span></dt>
+        <dd>
+            <span>{{vm.uSali.oprema}}</span>
+        </dd>
+        <dt><span>Napomene</span></dt>
+        <dd>
+            <span>{{vm.uSali.napomene}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

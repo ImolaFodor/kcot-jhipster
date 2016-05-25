@@ -1,0 +1,29 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "naziv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "kontakt_ime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kontakt_prz",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kontakt_broj",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160525112850",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "skola",
+    "pagination": "pager"
+}

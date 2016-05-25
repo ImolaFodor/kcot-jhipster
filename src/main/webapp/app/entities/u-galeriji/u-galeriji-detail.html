@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span>U Galeriji</span> {{vm.uGaleriji.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Naziv</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.naziv}}</span>
+        </dd>
+        <dt><span>Datum</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.datum | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.poslovna_godina">Poslovna Godina</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.poslovna_godina}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.kontakt_ime">Kontakt Ime</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.kontakt_ime}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.kontakt_prz">Kontakt Prz</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.kontakt_prz}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.kontakt_broj">Kontakt Broj</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.kontakt_broj}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.kontakt_email">Kontakt Email</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.kontakt_email}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span translate="{{'kcotApp.Status.' + vm.uGaleriji.status}}">{{vm.uGaleriji.status}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.moderator_ime">Moderator Ime</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.moderator_ime}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.moderator_prz">Moderator Prz</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.moderator_prz}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.moderator_broj">Moderator Broj</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.moderator_broj}}</span>
+        </dd>
+        <dt><span>Trosak</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.trosak}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.unajmio_ime">Unajmio Ime</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.unajmio_ime}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.unajmio_prz">Unajmio Prz</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.unajmio_prz}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.unajmio_email">Unajmio Email</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.unajmio_email}}</span>
+        </dd>
+        <dt><span translate="kcotApp.uGaleriji.br_fakture">Br Fakture</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.br_fakture}}</span>
+        </dd>
+        <dt><span>Zarada</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.zarada}}</span>
+        </dd>
+        <dt><span>Posecenost</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.posecenost}}</span>
+        </dd>
+        <dt><span>Tip</span></dt>
+        <dd>
+            <span translate="{{'kcotApp.Tip.' + vm.uGaleriji.tip}}">{{vm.uGaleriji.tip}}</span>
+        </dd>
+        <dt><span>Napomene</span></dt>
+        <dd>
+            <span>{{vm.uGaleriji.napomene}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

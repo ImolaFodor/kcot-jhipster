@@ -1,0 +1,33 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "sediste",
+            "otherEntityName": "sediste",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "rezervacijaProdaja",
+            "otherEntityName": "rezervacijaProdaja",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "opis",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20160525115819",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "rezervisano_sediste",
+    "pagination": "pager"
+}

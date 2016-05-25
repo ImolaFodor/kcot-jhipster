@@ -1,0 +1,68 @@
+<div>
+    <h2>Rezervisano Sedistes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="rezervisano-sediste.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Rezervisano Sediste
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="opis"><span>Opis</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sediste.id"><span>Sediste</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rezervacijaProdaja.id"><span>Rezervacija Prodaja</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="rezervisanoSediste in vm.rezervisanoSedistes track by rezervisanoSediste.id">
+                    <td><a ui-sref="rezervisano-sediste-detail({id:rezervisanoSediste.id})">{{rezervisanoSediste.id}}</a></td>
+                    <td>{{rezervisanoSediste.opis}}</td>
+                    <td>
+                        <a ui-sref="sediste-detail({id:rezervisanoSediste.sediste.id})">{{rezervisanoSediste.sediste.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="rezervacija-prodaja-detail({id:rezervisanoSediste.rezervacijaProdaja.id})">{{rezervisanoSediste.rezervacijaProdaja.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="rezervisano-sediste-detail({id:rezervisanoSediste.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="rezervisano-sediste.edit({id:rezervisanoSediste.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="rezervisano-sediste.delete({id:rezervisanoSediste.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

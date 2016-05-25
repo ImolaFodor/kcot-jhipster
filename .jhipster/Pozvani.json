@@ -1,0 +1,34 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "uGaleriji",
+            "otherEntityName": "uGaleriji",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "naziv"
+        },
+        {
+            "relationshipName": "gost",
+            "otherEntityName": "gost",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "prz"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "POTVRDIO, ODBIO,NEDEFINISAN"
+        }
+    ],
+    "changelogDate": "20160525110948",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "pozvani",
+    "pagination": "pager"
+}

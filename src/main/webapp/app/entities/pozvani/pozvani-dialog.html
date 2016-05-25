@@ -1,0 +1,58 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPozvaniLabel">Create or edit a Pozvani</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.pozvani.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.pozvani.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.pozvani.status" id="field_status">
+                <option value="POTVRDIO">POTVRDIO</option>
+                <option value="ODBIO">ODBIO</option>
+                <option value="NEDEFINISAN">NEDEFINISAN</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_uGaleriji">U Galeriji</label>
+            <select class="form-control" id="field_uGaleriji" name="uGaleriji" ng-model="vm.pozvani.uGaleriji" ng-options="uGaleriji as uGaleriji.naziv for uGaleriji in vm.ugalerijis track by uGaleriji.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.uGaleriji.$invalid">
+            <p class="help-block"
+                ng-show="editForm.uGaleriji.$error.required">
+                This field is required.
+            </p>
+        </div>
+        <div class="form-group">
+            <label for="field_gost">Gost</label>
+            <select class="form-control" id="field_gost" name="gost" ng-model="vm.pozvani.gost" ng-options="gost as gost.prz for gost in vm.gosts track by gost.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.gost.$invalid">
+            <p class="help-block"
+                ng-show="editForm.gost.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
