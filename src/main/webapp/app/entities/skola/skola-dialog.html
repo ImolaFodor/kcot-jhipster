@@ -4,7 +4,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="mySkolaLabel">Create or edit a Skola</h4>
+        <h4 class="modal-title" id="mySkolaLabel">Kreiraj ili modifikuj školu</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -21,24 +21,24 @@
             <div ng-show="editForm.naziv.$invalid">
                 <p class="help-block"
                     ng-show="editForm.naziv.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.skola.kontakt_ime" for="field_kontakt_ime">Kontakt Ime</label>
+            <label class="control-label" translate="kcotApp.skola.kontakt_ime" for="field_kontakt_ime">Kontakt ime</label>
             <input type="text" class="form-control" name="kontakt_ime" id="field_kontakt_ime"
                     ng-model="vm.skola.kontakt_ime"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.skola.kontakt_prz" for="field_kontakt_prz">Kontakt Prz</label>
+            <label class="control-label" translate="kcotApp.skola.kontakt_prz" for="field_kontakt_prz">Kontakt prezime</label>
             <input type="text" class="form-control" name="kontakt_prz" id="field_kontakt_prz"
                     ng-model="vm.skola.kontakt_prz"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.skola.kontakt_broj" for="field_kontakt_broj">Kontakt Broj</label>
+            <label class="control-label" translate="kcotApp.skola.kontakt_broj" for="field_kontakt_broj">Kontakt broj</label>
             <input type="text" class="form-control" name="kontakt_broj" id="field_kontakt_broj"
                     ng-model="vm.skola.kontakt_broj"
                      />
@@ -47,10 +47,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Otkaži</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Sačuvaj</span>
         </button>
     </div>
 </form>

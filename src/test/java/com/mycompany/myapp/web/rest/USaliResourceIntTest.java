@@ -33,7 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.mycompany.myapp.domain.enumeration.Status;
+import com.mycompany.myapp.domain.enumeration.StatusGal;
 
 /**
  * Test class for the USaliResource REST controller.
@@ -63,9 +63,6 @@ public class USaliResourceIntTest {
     private static final String DEFAULT_KONTAKT_EMAIL = "AAAAA";
     private static final String UPDATED_KONTAKT_EMAIL = "BBBBB";
 
-    private static final Status DEFAULT_STATUS = Status.REALIZOVANO;
-    private static final Status UPDATED_STATUS = Status.U_PLANU;
-
     private static final Integer DEFAULT_ZARADA = 1;
     private static final Integer UPDATED_ZARADA = 2;
 
@@ -90,6 +87,9 @@ public class USaliResourceIntTest {
     private static final ZonedDateTime DEFAULT_DATUM = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
     private static final ZonedDateTime UPDATED_DATUM = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
     private static final String DEFAULT_DATUM_STR = dateTimeFormatter.format(DEFAULT_DATUM);
+
+    private static final StatusGal DEFAULT_STATUS = StatusGal.REALIZOVANO;
+    private static final StatusGal UPDATED_STATUS = StatusGal.U_PLANU;
 
     @Inject
     private USaliRepository uSaliRepository;
@@ -123,7 +123,6 @@ public class USaliResourceIntTest {
         uSali.setKontakt_prz(DEFAULT_KONTAKT_PRZ);
         uSali.setKontakt_broj(DEFAULT_KONTAKT_BROJ);
         uSali.setKontakt_email(DEFAULT_KONTAKT_EMAIL);
-        uSali.setStatus(DEFAULT_STATUS);
         uSali.setZarada(DEFAULT_ZARADA);
         uSali.setPrihod(DEFAULT_PRIHOD);
         uSali.setProcenat(DEFAULT_PROCENAT);
@@ -132,6 +131,7 @@ public class USaliResourceIntTest {
         uSali.setOprema(DEFAULT_OPREMA);
         uSali.setNapomene(DEFAULT_NAPOMENE);
         uSali.setDatum(DEFAULT_DATUM);
+        uSali.setStatus(DEFAULT_STATUS);
     }
 
     @Test
@@ -156,7 +156,6 @@ public class USaliResourceIntTest {
         assertThat(testUSali.getKontakt_prz()).isEqualTo(DEFAULT_KONTAKT_PRZ);
         assertThat(testUSali.getKontakt_broj()).isEqualTo(DEFAULT_KONTAKT_BROJ);
         assertThat(testUSali.getKontakt_email()).isEqualTo(DEFAULT_KONTAKT_EMAIL);
-        assertThat(testUSali.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testUSali.getZarada()).isEqualTo(DEFAULT_ZARADA);
         assertThat(testUSali.getPrihod()).isEqualTo(DEFAULT_PRIHOD);
         assertThat(testUSali.getProcenat()).isEqualTo(DEFAULT_PROCENAT);
@@ -165,6 +164,7 @@ public class USaliResourceIntTest {
         assertThat(testUSali.isOprema()).isEqualTo(DEFAULT_OPREMA);
         assertThat(testUSali.getNapomene()).isEqualTo(DEFAULT_NAPOMENE);
         assertThat(testUSali.getDatum()).isEqualTo(DEFAULT_DATUM);
+        assertThat(testUSali.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -205,24 +205,6 @@ public class USaliResourceIntTest {
 
     @Test
     @Transactional
-    public void checkStatusIsRequired() throws Exception {
-        int databaseSizeBeforeTest = uSaliRepository.findAll().size();
-        // set the field null
-        uSali.setStatus(null);
-
-        // Create the USali, which fails.
-
-        restUSaliMockMvc.perform(post("/api/u-salis")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(uSali)))
-                .andExpect(status().isBadRequest());
-
-        List<USali> uSalis = uSaliRepository.findAll();
-        assertThat(uSalis).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllUSalis() throws Exception {
         // Initialize the database
         uSaliRepository.saveAndFlush(uSali);
@@ -238,7 +220,6 @@ public class USaliResourceIntTest {
                 .andExpect(jsonPath("$.[*].kontakt_prz").value(hasItem(DEFAULT_KONTAKT_PRZ.toString())))
                 .andExpect(jsonPath("$.[*].kontakt_broj").value(hasItem(DEFAULT_KONTAKT_BROJ)))
                 .andExpect(jsonPath("$.[*].kontakt_email").value(hasItem(DEFAULT_KONTAKT_EMAIL.toString())))
-                .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
                 .andExpect(jsonPath("$.[*].zarada").value(hasItem(DEFAULT_ZARADA)))
                 .andExpect(jsonPath("$.[*].prihod").value(hasItem(DEFAULT_PRIHOD)))
                 .andExpect(jsonPath("$.[*].procenat").value(hasItem(DEFAULT_PROCENAT)))
@@ -246,7 +227,8 @@ public class USaliResourceIntTest {
                 .andExpect(jsonPath("$.[*].titl").value(hasItem(DEFAULT_TITL.booleanValue())))
                 .andExpect(jsonPath("$.[*].oprema").value(hasItem(DEFAULT_OPREMA.booleanValue())))
                 .andExpect(jsonPath("$.[*].napomene").value(hasItem(DEFAULT_NAPOMENE.intValue())))
-                .andExpect(jsonPath("$.[*].datum").value(hasItem(DEFAULT_DATUM_STR)));
+                .andExpect(jsonPath("$.[*].datum").value(hasItem(DEFAULT_DATUM_STR)))
+                .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
 
     @Test
@@ -266,7 +248,6 @@ public class USaliResourceIntTest {
             .andExpect(jsonPath("$.kontakt_prz").value(DEFAULT_KONTAKT_PRZ.toString()))
             .andExpect(jsonPath("$.kontakt_broj").value(DEFAULT_KONTAKT_BROJ))
             .andExpect(jsonPath("$.kontakt_email").value(DEFAULT_KONTAKT_EMAIL.toString()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.zarada").value(DEFAULT_ZARADA))
             .andExpect(jsonPath("$.prihod").value(DEFAULT_PRIHOD))
             .andExpect(jsonPath("$.procenat").value(DEFAULT_PROCENAT))
@@ -274,7 +255,8 @@ public class USaliResourceIntTest {
             .andExpect(jsonPath("$.titl").value(DEFAULT_TITL.booleanValue()))
             .andExpect(jsonPath("$.oprema").value(DEFAULT_OPREMA.booleanValue()))
             .andExpect(jsonPath("$.napomene").value(DEFAULT_NAPOMENE.intValue()))
-            .andExpect(jsonPath("$.datum").value(DEFAULT_DATUM_STR));
+            .andExpect(jsonPath("$.datum").value(DEFAULT_DATUM_STR))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
 
     @Test
@@ -301,7 +283,6 @@ public class USaliResourceIntTest {
         updatedUSali.setKontakt_prz(UPDATED_KONTAKT_PRZ);
         updatedUSali.setKontakt_broj(UPDATED_KONTAKT_BROJ);
         updatedUSali.setKontakt_email(UPDATED_KONTAKT_EMAIL);
-        updatedUSali.setStatus(UPDATED_STATUS);
         updatedUSali.setZarada(UPDATED_ZARADA);
         updatedUSali.setPrihod(UPDATED_PRIHOD);
         updatedUSali.setProcenat(UPDATED_PROCENAT);
@@ -310,6 +291,7 @@ public class USaliResourceIntTest {
         updatedUSali.setOprema(UPDATED_OPREMA);
         updatedUSali.setNapomene(UPDATED_NAPOMENE);
         updatedUSali.setDatum(UPDATED_DATUM);
+        updatedUSali.setStatus(UPDATED_STATUS);
 
         restUSaliMockMvc.perform(put("/api/u-salis")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -326,7 +308,6 @@ public class USaliResourceIntTest {
         assertThat(testUSali.getKontakt_prz()).isEqualTo(UPDATED_KONTAKT_PRZ);
         assertThat(testUSali.getKontakt_broj()).isEqualTo(UPDATED_KONTAKT_BROJ);
         assertThat(testUSali.getKontakt_email()).isEqualTo(UPDATED_KONTAKT_EMAIL);
-        assertThat(testUSali.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testUSali.getZarada()).isEqualTo(UPDATED_ZARADA);
         assertThat(testUSali.getPrihod()).isEqualTo(UPDATED_PRIHOD);
         assertThat(testUSali.getProcenat()).isEqualTo(UPDATED_PROCENAT);
@@ -335,6 +316,7 @@ public class USaliResourceIntTest {
         assertThat(testUSali.isOprema()).isEqualTo(UPDATED_OPREMA);
         assertThat(testUSali.getNapomene()).isEqualTo(UPDATED_NAPOMENE);
         assertThat(testUSali.getDatum()).isEqualTo(UPDATED_DATUM);
+        assertThat(testUSali.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test

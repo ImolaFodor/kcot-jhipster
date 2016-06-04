@@ -14,7 +14,7 @@
             url: '/umetnicko-delo?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'UmetnickoDelos'
+                pageTitle: 'Umetnička dela'
             },
             views: {
                 'content@': {

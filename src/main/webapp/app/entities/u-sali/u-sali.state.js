@@ -14,7 +14,7 @@
             url: '/u-sali?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'USalis'
+                pageTitle: 'U sali'
             },
             views: {
                 'content@': {
@@ -88,7 +88,6 @@
                                 kontakt_prz: null,
                                 kontakt_broj: null,
                                 kontakt_email: null,
-                                status: null,
                                 zarada: null,
                                 prihod: null,
                                 procenat: null,
@@ -97,6 +96,7 @@
                                 oprema: null,
                                 napomene: null,
                                 datum: null,
+                                status: null,
                                 id: null
                             };
                         }

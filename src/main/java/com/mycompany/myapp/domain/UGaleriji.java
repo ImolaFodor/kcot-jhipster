@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-import com.mycompany.myapp.domain.enumeration.Status;
-
 import com.mycompany.myapp.domain.enumeration.Tip;
+
+import com.mycompany.myapp.domain.enumeration.StatusGal;
 
 /**
  * A UGaleriji.
@@ -46,11 +46,6 @@ public class UGaleriji implements Serializable {
 
     @Column(name = "kontakt_email")
     private String kontakt_email;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private Status status;
 
     @Column(name = "moderator_ime")
     private String moderator_ime;
@@ -92,6 +87,10 @@ public class UGaleriji implements Serializable {
 
     @Column(name = "datum")
     private ZonedDateTime datum;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusGal status;
 
     public Long getId() {
         return id;
@@ -147,14 +146,6 @@ public class UGaleriji implements Serializable {
 
     public void setKontakt_email(String kontakt_email) {
         this.kontakt_email = kontakt_email;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     public String getModerator_ime() {
@@ -261,6 +252,14 @@ public class UGaleriji implements Serializable {
         this.datum = datum;
     }
 
+    public StatusGal getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusGal status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -291,7 +290,6 @@ public class UGaleriji implements Serializable {
             ", kontakt_prz='" + kontakt_prz + "'" +
             ", kontakt_broj='" + kontakt_broj + "'" +
             ", kontakt_email='" + kontakt_email + "'" +
-            ", status='" + status + "'" +
             ", moderator_ime='" + moderator_ime + "'" +
             ", moderator_prz='" + moderator_prz + "'" +
             ", moderator_broj='" + moderator_broj + "'" +
@@ -305,6 +303,7 @@ public class UGaleriji implements Serializable {
             ", tip='" + tip + "'" +
             ", napomene='" + napomene + "'" +
             ", datum='" + datum + "'" +
+            ", status='" + status + "'" +
             '}';
     }
 }

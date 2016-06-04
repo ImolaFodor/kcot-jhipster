@@ -1,5 +1,5 @@
 <div>
-    <h2>Umetnicko Delos</h2>
+    <h2>Umetnička dela</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="umetnicko-delo.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Umetnicko Delo
+                        Kreiraj novo delo
                     </span>
                 </button>
             </div>
@@ -20,10 +20,10 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="naziv"><span>Naziv</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="umetnik_ime"><span translate="kcotApp.umetnickoDelo.umetnik_ime">Umetnik Ime</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="umetnik_prz"><span translate="kcotApp.umetnickoDelo.umetnik_prz">Umetnik Prz</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="inventarski_broj"><span translate="kcotApp.umetnickoDelo.inventarski_broj">Inventarski Broj</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="tip_um_dela"><span translate="kcotApp.umetnickoDelo.tip_um_dela">Tip Um Dela</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="umetnik_ime"><span translate="kcotApp.umetnickoDelo.umetnik_ime">Ime umetnika</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="umetnik_prz"><span translate="kcotApp.umetnickoDelo.umetnik_prz">Prezime umetnika</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="inventarski_broj"><span translate="kcotApp.umetnickoDelo.inventarski_broj">Inventarski broj</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tip_um_dela"><span translate="kcotApp.umetnickoDelo.tip_um_dela">Tip</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>

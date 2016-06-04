@@ -14,7 +14,7 @@
             url: '/dnevni-pazar?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'DnevniPazars'
+                pageTitle: 'Dnevni pazari'
             },
             views: {
                 'content@': {

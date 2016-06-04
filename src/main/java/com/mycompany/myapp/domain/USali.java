@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-import com.mycompany.myapp.domain.enumeration.Status;
+import com.mycompany.myapp.domain.enumeration.StatusGal;
 
 /**
  * A USali.
@@ -45,11 +45,6 @@ public class USali implements Serializable {
     @Column(name = "kontakt_email")
     private String kontakt_email;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private Status status;
-
     @Column(name = "zarada")
     private Integer zarada;
 
@@ -73,6 +68,10 @@ public class USali implements Serializable {
 
     @Column(name = "datum")
     private ZonedDateTime datum;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusGal status;
 
     public Long getId() {
         return id;
@@ -128,14 +127,6 @@ public class USali implements Serializable {
 
     public void setKontakt_email(String kontakt_email) {
         this.kontakt_email = kontakt_email;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     public Integer getZarada() {
@@ -202,6 +193,14 @@ public class USali implements Serializable {
         this.datum = datum;
     }
 
+    public StatusGal getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusGal status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -232,7 +231,6 @@ public class USali implements Serializable {
             ", kontakt_prz='" + kontakt_prz + "'" +
             ", kontakt_broj='" + kontakt_broj + "'" +
             ", kontakt_email='" + kontakt_email + "'" +
-            ", status='" + status + "'" +
             ", zarada='" + zarada + "'" +
             ", prihod='" + prihod + "'" +
             ", procenat='" + procenat + "'" +
@@ -241,6 +239,7 @@ public class USali implements Serializable {
             ", oprema='" + oprema + "'" +
             ", napomene='" + napomene + "'" +
             ", datum='" + datum + "'" +
+            ", status='" + status + "'" +
             '}';
     }
 }

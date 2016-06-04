@@ -14,7 +14,7 @@
             url: '/rezervacija-prodaja?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'RezervacijaProdajas'
+                pageTitle: 'Rezervacija/prodaja'
             },
             views: {
                 'content@': {

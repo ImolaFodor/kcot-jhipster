@@ -45,10 +45,6 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="status" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            
             <column name="zarada" type="integer">
                 <constraints nullable="true" />
             </column>
@@ -78,6 +74,10 @@
             </column>
             
             <column name="datum" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="status" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             

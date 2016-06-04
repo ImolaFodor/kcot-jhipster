@@ -32,14 +32,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "status",
-            "fieldType": "Status",
-            "fieldValues": "REALIZOVANO, U_PLANU",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "moderator_ime",
             "fieldType": "String"
         },
@@ -94,6 +86,11 @@
         {
             "fieldName": "datum",
             "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "StatusGal",
+            "fieldValues": "REALIZOVANO, U_PLANU,OTKAZANO"
         }
     ],
     "changelogDate": "20160525103641",

@@ -14,7 +14,7 @@
             url: '/izlozena-dela?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Izlozena_delas'
+                pageTitle: 'Izlozena dela'
             },
             views: {
                 'content@': {

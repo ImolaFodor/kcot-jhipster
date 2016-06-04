@@ -14,7 +14,7 @@
             url: '/u-galeriji?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'UGalerijis'
+                pageTitle: 'U galeriji'
             },
             views: {
                 'content@': {
@@ -88,7 +88,6 @@
                                 kontakt_prz: null,
                                 kontakt_broj: null,
                                 kontakt_email: null,
-                                status: null,
                                 moderator_ime: null,
                                 moderator_prz: null,
                                 moderator_broj: null,
@@ -102,6 +101,7 @@
                                 tip: null,
                                 napomene: null,
                                 datum: null,
+                                status: null,
                                 id: null
                             };
                         }

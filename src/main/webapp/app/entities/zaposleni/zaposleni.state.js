@@ -14,7 +14,7 @@
             url: '/zaposleni?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Zaposlenis'
+                pageTitle: 'Zaposleni'
             },
             views: {
                 'content@': {

@@ -14,7 +14,7 @@
             url: '/pozvani?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Pozvanis'
+                pageTitle: 'Pozvani'
             },
             views: {
                 'content@': {

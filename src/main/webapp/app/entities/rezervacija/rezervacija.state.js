@@ -14,7 +14,7 @@
             url: '/rezervacija?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Rezervacijas'
+                pageTitle: 'Rezervacije'
             },
             views: {
                 'content@': {

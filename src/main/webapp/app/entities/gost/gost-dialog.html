@@ -4,7 +4,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myGostLabel">Create or edit a Gost</h4>
+        <h4 class="modal-title" id="myGostLabel">Kreiraj iili modifikuj gosta</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -21,24 +21,24 @@
             <div ng-show="editForm.ime.$invalid">
                 <p class="help-block"
                     ng-show="editForm.ime.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_prz">Prz</label>
+            <label class="control-label" for="field_prz">Prezime</label>
             <input type="text" class="form-control" name="prz" id="field_prz"
                     ng-model="vm.gost.prz"
                     required />
             <div ng-show="editForm.prz.$invalid">
                 <p class="help-block"
                     ng-show="editForm.prz.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_broj">Broj</label>
+            <label class="control-label" for="field_broj">Broj telefona</label>
             <input type="number" class="form-control" name="broj" id="field_broj"
                     ng-model="vm.gost.broj"
                      />
@@ -56,7 +56,7 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.gost.tip_gost" for="field_tip_gost">Tip Gost</label>
+            <label class="control-label" translate="kcotApp.gost.tip_gost" for="field_tip_gost">Tip gosta</label>
             <select class="form-control" name="tip_gost" ng-model="vm.gost.tip_gost" id="field_tip_gost" required>
                 <option value="VIP">VIP</option>
                 <option value="GRADJANIN">GRADJANIN</option>
@@ -64,7 +64,7 @@
             <div ng-show="editForm.tip_gost.$invalid">
                 <p class="help-block"
                     ng-show="editForm.tip_gost.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
             </div>
         </div>
@@ -72,10 +72,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Otkaži</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Sačuvaj</span>
         </button>
     </div>
 </form>

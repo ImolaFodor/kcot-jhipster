@@ -45,10 +45,6 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="status" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            
             <column name="moderator_ime" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -98,6 +94,10 @@
             </column>
             
             <column name="datum" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="status" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             

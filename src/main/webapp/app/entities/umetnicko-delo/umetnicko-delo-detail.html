@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span>Umetnicko Delo</span> {{vm.umetnickoDelo.id}}</h2>
+    <h2><span>Umetničko delo</span> {{vm.umetnickoDelo.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
@@ -8,19 +8,19 @@
         <dd>
             <span>{{vm.umetnickoDelo.naziv}}</span>
         </dd>
-        <dt><span translate="kcotApp.umetnickoDelo.umetnik_ime">Umetnik Ime</span></dt>
+        <dt><span translate="kcotApp.umetnickoDelo.umetnik_ime">Ime umetnika</span></dt>
         <dd>
             <span>{{vm.umetnickoDelo.umetnik_ime}}</span>
         </dd>
-        <dt><span translate="kcotApp.umetnickoDelo.umetnik_prz">Umetnik Prz</span></dt>
+        <dt><span translate="kcotApp.umetnickoDelo.umetnik_prz">Prezime umetnika</span></dt>
         <dd>
             <span>{{vm.umetnickoDelo.umetnik_prz}}</span>
         </dd>
-        <dt><span translate="kcotApp.umetnickoDelo.inventarski_broj">Inventarski Broj</span></dt>
+        <dt><span translate="kcotApp.umetnickoDelo.inventarski_broj">Inventarski broj</span></dt>
         <dd>
             <span>{{vm.umetnickoDelo.inventarski_broj}}</span>
         </dd>
-        <dt><span translate="kcotApp.umetnickoDelo.tip_um_dela">Tip Um Dela</span></dt>
+        <dt><span translate="kcotApp.umetnickoDelo.tip_um_dela">Tip</span></dt>
         <dd>
             <span translate="{{'kcotApp.TipUmDela.' + vm.umetnickoDelo.tip_um_dela}}">{{vm.umetnickoDelo.tip_um_dela}}</span>
         </dd>
@@ -29,6 +29,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Nazad</span>
     </button>
 </div>

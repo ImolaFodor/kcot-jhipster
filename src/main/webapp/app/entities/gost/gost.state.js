@@ -14,7 +14,7 @@
             url: '/gost?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Gosts'
+                pageTitle: 'Gosti'
             },
             views: {
                 'content@': {

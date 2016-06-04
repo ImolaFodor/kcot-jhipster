@@ -17,7 +17,7 @@
                 <li ui-sref-active="active">
                     <a ui-sref="home" ng-click="vm.collapseNavbar()">
                         <span class="glyphicon glyphicon-home"></span>
-                        <span class="hidden-sm">Home</span>
+                        <span class="hidden-sm">Početna</span>
                     </a>
                 </li>
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
@@ -26,88 +26,119 @@
                         <span>
                             <span class="glyphicon glyphicon-th-list"></span>
                             <span class="hidden-sm">
-                                Entities
-                            </span>
+                                Realizovani događaji                            </span>
                             <b class="caret"></b>
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
+
                         <li ui-sref-active="active" >
-                            <a ui-sref="umetnicko-delo" ng-click="vm.collapseNavbar()">
+                            <a ui-sref="u-sali" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Umetnicko Delo</span>
+                                <span >Događaji u sali</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" >
                             <a ui-sref="u-galeriji" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >U Galeriji</span>
+                                <span >Događaji u galeriji</span>
+                            </a>
+                        </li>
+                        <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                    </ul>
+                </li>
+                <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown class="dropdown pointer">
+                    <a class="dropdown-toggle" uib-dropdown-toggle href="" id="planirani-menu">
+                        <span>
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            <span class="hidden-sm">
+                                Planiranje događaja
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu>
+
+                        <li ui-sref-active="active" >
+                            <a ui-sref="u-sali" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span >Događaj u sali</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" >
+                            <a ui-sref="u-galeriji" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span >Događaj u galeriji</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" >
+                            <a ui-sref="umetnicko-delo" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span >Umetnička dela</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" >
                             <a ui-sref="izlozena-dela" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Izlozena Dela</span>
+                                <span >Izložena dela</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" >
                             <a ui-sref="donirana-dela" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Donirana Dela</span>
+                                <span >Donirana dela</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" >
                             <a ui-sref="gost" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Gost</span>
+                                <span >Gosti</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" >
                             <a ui-sref="pozvani" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Pozvani</span>
+                                <span >Pozvani na događaj</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active" >
-                            <a ui-sref="u-sali" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >U Sali</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" >
-                            <a ui-sref="zaposleni" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Zaposleni</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" >
-                            <a ui-sref="skola" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Skola</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" >
-                            <a ui-sref="sediste" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Sediste</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" >
-                            <a ui-sref="rezervacija" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Rezervacija</span>
-                            </a>
-                        </li>
+
+                        <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                    </ul>
+                </li>
+                <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown class="dropdown pointer">
+                    <a class="dropdown-toggle" uib-dropdown-toggle href="" id="rezprod-menu">
+                        <span>
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            <span class="hidden-sm">
+                                Rezervacija/prodaja
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu>
+
                         <li ui-sref-active="active" >
                             <a ui-sref="rezervacija-prodaja" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Rezervacija Prodaja</span>
+                                <span >Rezervacija/prodaja</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" >
                             <a ui-sref="rezervisano-sediste" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span >Rezervisano Sediste</span>
+                                <span >Rezervisana sedišta</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" >
+                            <a ui-sref="sediste" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span >Sedišta</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" >
+                            <a ui-sref="skola" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span >Škole</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" >
@@ -116,6 +147,7 @@
                                 <span >Dnevni Pazar</span>
                             </a>
                         </li>
+
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>
@@ -124,51 +156,58 @@
                         <span>
                             <span class="glyphicon glyphicon-user"></span>
                             <span class="hidden-sm">
-                                Account
+                                Nalog
                             </span>
                             <b class="caret"></b>
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
+
+                        <li ui-sref-active="active" >
+                            <a ui-sref="zaposleni" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span >Zaposleni</span>
+                            </a>
+                        </li>
                         <li ui-sref-active="active" ng-switch-when="true">
                             <a ui-sref="settings" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-wrench"></span>&nbsp;
-                                <span>Settings</span>
+                                <span>Podešavanja</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" ng-switch-when="true">
                             <a ui-sref="password" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-lock"></span>
-                                <span>Password</span>
+                                <span>Lozinka</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" ng-switch-when="true">
                             <a ui-sref="sessions" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-cloud"></span>&nbsp;
-                                <span>Sessions</span>
+                                <span>Sesije</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" ng-switch-when="true">
                             <a href="" ng-click="vm.logout()" id="logout">
                                 <span class="glyphicon glyphicon-log-out"></span>&nbsp;
-                                <span>Sign out</span>
+                                <span>Odjavi se</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" ng-switch-when="false">
                             <a href="" ng-click="vm.login()" id="login">
                                 <span class="glyphicon glyphicon-log-in"></span>&nbsp;
-                                <span>Sign in</span>
+                                <span>Uloguj se</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" ng-switch-when="false">
                             <a ui-sref="register" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
-                                <span>Register</span>
+                                <span>Registruj se</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li ng-class="{active: vm.$state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown class="dropdown pointer">
+                <!--<li ng-class="{active: vm.$state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="admin-menu">
                         <span>
                             <span class="glyphicon glyphicon-tower"></span>
@@ -221,7 +260,7 @@
                         </li>
                         <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                     </ul>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>

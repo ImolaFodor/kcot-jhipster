@@ -8,19 +8,19 @@
         <dd>
             <span>{{vm.uGaleriji.naziv}}</span>
         </dd>
-        <dt><span translate="kcotApp.uGaleriji.poslovna_godina">Poslovna Godina</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.poslovna_godina">Poslovna godina</span></dt>
         <dd>
             <span>{{vm.uGaleriji.poslovna_godina}}</span>
         </dd>
-        <dt><span translate="kcotApp.uGaleriji.kontakt_ime">Kontakt Ime</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.kontakt_ime">Kontakt ime</span></dt>
         <dd>
             <span>{{vm.uGaleriji.kontakt_ime}}</span>
         </dd>
-        <dt><span translate="kcotApp.uGaleriji.kontakt_prz">Kontakt Prz</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.kontakt_prz">Kontakt prezime</span></dt>
         <dd>
             <span>{{vm.uGaleriji.kontakt_prz}}</span>
         </dd>
-        <dt><span translate="kcotApp.uGaleriji.kontakt_broj">Kontakt Broj</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.kontakt_broj">Kontakt broj</span></dt>
         <dd>
             <span>{{vm.uGaleriji.kontakt_broj}}</span>
         </dd>
@@ -28,19 +28,15 @@
         <dd>
             <span>{{vm.uGaleriji.kontakt_email}}</span>
         </dd>
-        <dt><span>Status</span></dt>
-        <dd>
-            <span translate="{{'kcotApp.Status.' + vm.uGaleriji.status}}">{{vm.uGaleriji.status}}</span>
-        </dd>
-        <dt><span translate="kcotApp.uGaleriji.moderator_ime">Moderator Ime</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.moderator_ime">Moderator ime</span></dt>
         <dd>
             <span>{{vm.uGaleriji.moderator_ime}}</span>
         </dd>
-        <dt><span translate="kcotApp.uGaleriji.moderator_prz">Moderator Prz</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.moderator_prz">Moderator prezime</span></dt>
         <dd>
             <span>{{vm.uGaleriji.moderator_prz}}</span>
         </dd>
-        <dt><span translate="kcotApp.uGaleriji.moderator_broj">Moderator Broj</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.moderator_broj">Moderator broj</span></dt>
         <dd>
             <span>{{vm.uGaleriji.moderator_broj}}</span>
         </dd>
@@ -48,11 +44,11 @@
         <dd>
             <span>{{vm.uGaleriji.trosak}}</span>
         </dd>
-        <dt><span translate="kcotApp.uGaleriji.unajmio_ime">Unajmio Ime</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.unajmio_ime">Unajmio ime</span></dt>
         <dd>
             <span>{{vm.uGaleriji.unajmio_ime}}</span>
         </dd>
-        <dt><span translate="kcotApp.uGaleriji.unajmio_prz">Unajmio Prz</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.unajmio_prz">Unajmio prezime</span></dt>
         <dd>
             <span>{{vm.uGaleriji.unajmio_prz}}</span>
         </dd>
@@ -60,7 +56,7 @@
         <dd>
             <span>{{vm.uGaleriji.unajmio_email}}</span>
         </dd>
-        <dt><span translate="kcotApp.uGaleriji.br_fakture">Br Fakture</span></dt>
+        <dt><span translate="kcotApp.uGaleriji.br_fakture">Br fakture</span></dt>
         <dd>
             <span>{{vm.uGaleriji.br_fakture}}</span>
         </dd>
@@ -68,7 +64,7 @@
         <dd>
             <span>{{vm.uGaleriji.zarada}}</span>
         </dd>
-        <dt><span>Posecenost</span></dt>
+        <dt><span>Posećenost</span></dt>
         <dd>
             <span>{{vm.uGaleriji.posecenost}}</span>
         </dd>
@@ -84,11 +80,15 @@
         <dd>
             <span>{{vm.uGaleriji.datum | date:'medium'}}</span>
         </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span translate="{{'kcotApp.StatusGal.' + vm.uGaleriji.status}}">{{vm.uGaleriji.status}}</span>
+        </dd>
     </dl>
 
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Nazad</span>
     </button>
 </div>

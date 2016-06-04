@@ -67,7 +67,7 @@ class UGalerijiGatlingTest extends Simulation {
             .exec(http("Create new uGaleriji")
             .post("/api/u-galerijis")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "naziv":"SAMPLE_TEXT", "poslovna_godina":"0", "kontakt_ime":"SAMPLE_TEXT", "kontakt_prz":"SAMPLE_TEXT", "kontakt_broj":"0", "kontakt_email":"SAMPLE_TEXT", "status":null, "moderator_ime":"SAMPLE_TEXT", "moderator_prz":"SAMPLE_TEXT", "moderator_broj":"SAMPLE_TEXT", "trosak":"0", "unajmio_ime":"SAMPLE_TEXT", "unajmio_prz":"SAMPLE_TEXT", "unajmio_email":"SAMPLE_TEXT", "br_fakture":"SAMPLE_TEXT", "zarada":"0", "posecenost":"0", "tip":null, "napomene":null, "datum":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "naziv":"SAMPLE_TEXT", "poslovna_godina":"0", "kontakt_ime":"SAMPLE_TEXT", "kontakt_prz":"SAMPLE_TEXT", "kontakt_broj":"0", "kontakt_email":"SAMPLE_TEXT", "moderator_ime":"SAMPLE_TEXT", "moderator_prz":"SAMPLE_TEXT", "moderator_broj":"SAMPLE_TEXT", "trosak":"0", "unajmio_ime":"SAMPLE_TEXT", "unajmio_prz":"SAMPLE_TEXT", "unajmio_email":"SAMPLE_TEXT", "br_fakture":"SAMPLE_TEXT", "zarada":"0", "posecenost":"0", "tip":null, "napomene":null, "datum":"2020-01-01T00:00:00.000Z", "status":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_uGaleriji_url"))).exitHereIfFailed
             .pause(10)

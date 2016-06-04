@@ -4,7 +4,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myUGalerijiLabel">Create or edit a U Galeriji</h4>
+        <h4 class="modal-title" id="myUGalerijiLabel">Kreiraj ili modifikuj događaj</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -21,40 +21,40 @@
             <div ng-show="editForm.naziv.$invalid">
                 <p class="help-block"
                     ng-show="editForm.naziv.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.poslovna_godina" for="field_poslovna_godina">Poslovna Godina</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.poslovna_godina" for="field_poslovna_godina">Poslovna godina</label>
             <input type="number" class="form-control" name="poslovna_godina" id="field_poslovna_godina"
                     ng-model="vm.uGaleriji.poslovna_godina"
                     required />
             <div ng-show="editForm.poslovna_godina.$invalid">
                 <p class="help-block"
                     ng-show="editForm.poslovna_godina.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.poslovna_godina.$error.number">
-                    This field should be a number.
+                    Ovo polje bi trebalo da je broj.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.kontakt_ime" for="field_kontakt_ime">Kontakt Ime</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.kontakt_ime" for="field_kontakt_ime">Kontakt ime</label>
             <input type="text" class="form-control" name="kontakt_ime" id="field_kontakt_ime"
                     ng-model="vm.uGaleriji.kontakt_ime"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.kontakt_prz" for="field_kontakt_prz">Kontakt Prz</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.kontakt_prz" for="field_kontakt_prz">Kontakt prezime</label>
             <input type="text" class="form-control" name="kontakt_prz" id="field_kontakt_prz"
                     ng-model="vm.uGaleriji.kontakt_prz"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.kontakt_broj" for="field_kontakt_broj">Kontakt Broj</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.kontakt_broj" for="field_kontakt_broj">Kontakt broj</label>
             <input type="number" class="form-control" name="kontakt_broj" id="field_kontakt_broj"
                     ng-model="vm.uGaleriji.kontakt_broj"
                      />
@@ -66,32 +66,19 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_status">Status</label>
-            <select class="form-control" name="status" ng-model="vm.uGaleriji.status" id="field_status" required>
-                <option value="REALIZOVANO">REALIZOVANO</option>
-                <option value="U_PLANU" translate="kcotApp.Status.U_PLANU">U_PLANU</option>
-            </select>
-            <div ng-show="editForm.status.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.status.$error.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.moderator_ime" for="field_moderator_ime">Moderator Ime</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.moderator_ime" for="field_moderator_ime">Moderator ime</label>
             <input type="text" class="form-control" name="moderator_ime" id="field_moderator_ime"
                     ng-model="vm.uGaleriji.moderator_ime"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.moderator_prz" for="field_moderator_prz">Moderator Prz</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.moderator_prz" for="field_moderator_prz">Moderator prezime</label>
             <input type="text" class="form-control" name="moderator_prz" id="field_moderator_prz"
                     ng-model="vm.uGaleriji.moderator_prz"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.moderator_broj" for="field_moderator_broj">Moderator Broj</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.moderator_broj" for="field_moderator_broj">Moderator broj</label>
             <input type="text" class="form-control" name="moderator_broj" id="field_moderator_broj"
                     ng-model="vm.uGaleriji.moderator_broj"
                      />
@@ -103,13 +90,13 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.unajmio_ime" for="field_unajmio_ime">Unajmio Ime</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.unajmio_ime" for="field_unajmio_ime">Unajmio ime</label>
             <input type="text" class="form-control" name="unajmio_ime" id="field_unajmio_ime"
                     ng-model="vm.uGaleriji.unajmio_ime"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.unajmio_prz" for="field_unajmio_prz">Unajmio Prz</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.unajmio_prz" for="field_unajmio_prz">Unajmio prezime</label>
             <input type="text" class="form-control" name="unajmio_prz" id="field_unajmio_prz"
                     ng-model="vm.uGaleriji.unajmio_prz"
                      />
@@ -121,7 +108,7 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.uGaleriji.br_fakture" for="field_br_fakture">Br Fakture</label>
+            <label class="control-label" translate="kcotApp.uGaleriji.br_fakture" for="field_br_fakture">Br fakture</label>
             <input type="text" class="form-control" name="br_fakture" id="field_br_fakture"
                     ng-model="vm.uGaleriji.br_fakture"
                      />
@@ -133,7 +120,7 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_posecenost">Posecenost</label>
+            <label class="control-label" for="field_posecenost">Posećenost</label>
             <input type="number" class="form-control" name="posecenost" id="field_posecenost"
                     ng-model="vm.uGaleriji.posecenost"
                      />
@@ -150,7 +137,7 @@
             <div ng-show="editForm.tip.$invalid">
                 <p class="help-block"
                     ng-show="editForm.tip.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
             </div>
         </div>
@@ -170,14 +157,22 @@
                     </span>
                 </div>
         </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.uGaleriji.status" id="field_status">
+                <option value="REALIZOVANO">REALIZOVANO</option>
+                <option value="U_PLANU" translate="kcotApp.StatusGal.U_PLANU">U PLANU</option>
+                <option value="OTKAZANO">OTKAZANO</option>
+            </select>
+        </div>
 
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Otkaži</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Sačuvaj</span>
         </button>
     </div>
 </form>

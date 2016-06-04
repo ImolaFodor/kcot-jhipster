@@ -14,7 +14,7 @@
             url: '/donirana-dela?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Donirana_delas'
+                pageTitle: 'Donirana dela'
             },
             views: {
                 'content@': {

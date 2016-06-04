@@ -33,8 +33,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.mycompany.myapp.domain.enumeration.Status;
 import com.mycompany.myapp.domain.enumeration.Tip;
+import com.mycompany.myapp.domain.enumeration.StatusGal;
 
 /**
  * Test class for the UGalerijiResource REST controller.
@@ -63,9 +63,6 @@ public class UGalerijiResourceIntTest {
     private static final Integer UPDATED_KONTAKT_BROJ = 2;
     private static final String DEFAULT_KONTAKT_EMAIL = "AAAAA";
     private static final String UPDATED_KONTAKT_EMAIL = "BBBBB";
-
-    private static final Status DEFAULT_STATUS = Status.REALIZOVANO;
-    private static final Status UPDATED_STATUS = Status.U_PLANU;
     private static final String DEFAULT_MODERATOR_IME = "AAAAA";
     private static final String UPDATED_MODERATOR_IME = "BBBBB";
     private static final String DEFAULT_MODERATOR_PRZ = "AAAAA";
@@ -100,6 +97,9 @@ public class UGalerijiResourceIntTest {
     private static final ZonedDateTime UPDATED_DATUM = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
     private static final String DEFAULT_DATUM_STR = dateTimeFormatter.format(DEFAULT_DATUM);
 
+    private static final StatusGal DEFAULT_STATUS = StatusGal.REALIZOVANO;
+    private static final StatusGal UPDATED_STATUS = StatusGal.U_PLANU;
+
     @Inject
     private UGalerijiRepository uGalerijiRepository;
 
@@ -132,7 +132,6 @@ public class UGalerijiResourceIntTest {
         uGaleriji.setKontakt_prz(DEFAULT_KONTAKT_PRZ);
         uGaleriji.setKontakt_broj(DEFAULT_KONTAKT_BROJ);
         uGaleriji.setKontakt_email(DEFAULT_KONTAKT_EMAIL);
-        uGaleriji.setStatus(DEFAULT_STATUS);
         uGaleriji.setModerator_ime(DEFAULT_MODERATOR_IME);
         uGaleriji.setModerator_prz(DEFAULT_MODERATOR_PRZ);
         uGaleriji.setModerator_broj(DEFAULT_MODERATOR_BROJ);
@@ -146,6 +145,7 @@ public class UGalerijiResourceIntTest {
         uGaleriji.setTip(DEFAULT_TIP);
         uGaleriji.setNapomene(DEFAULT_NAPOMENE);
         uGaleriji.setDatum(DEFAULT_DATUM);
+        uGaleriji.setStatus(DEFAULT_STATUS);
     }
 
     @Test
@@ -170,7 +170,6 @@ public class UGalerijiResourceIntTest {
         assertThat(testUGaleriji.getKontakt_prz()).isEqualTo(DEFAULT_KONTAKT_PRZ);
         assertThat(testUGaleriji.getKontakt_broj()).isEqualTo(DEFAULT_KONTAKT_BROJ);
         assertThat(testUGaleriji.getKontakt_email()).isEqualTo(DEFAULT_KONTAKT_EMAIL);
-        assertThat(testUGaleriji.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testUGaleriji.getModerator_ime()).isEqualTo(DEFAULT_MODERATOR_IME);
         assertThat(testUGaleriji.getModerator_prz()).isEqualTo(DEFAULT_MODERATOR_PRZ);
         assertThat(testUGaleriji.getModerator_broj()).isEqualTo(DEFAULT_MODERATOR_BROJ);
@@ -184,6 +183,7 @@ public class UGalerijiResourceIntTest {
         assertThat(testUGaleriji.getTip()).isEqualTo(DEFAULT_TIP);
         assertThat(testUGaleriji.getNapomene()).isEqualTo(DEFAULT_NAPOMENE);
         assertThat(testUGaleriji.getDatum()).isEqualTo(DEFAULT_DATUM);
+        assertThat(testUGaleriji.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -210,24 +210,6 @@ public class UGalerijiResourceIntTest {
         int databaseSizeBeforeTest = uGalerijiRepository.findAll().size();
         // set the field null
         uGaleriji.setPoslovna_godina(null);
-
-        // Create the UGaleriji, which fails.
-
-        restUGalerijiMockMvc.perform(post("/api/u-galerijis")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(uGaleriji)))
-                .andExpect(status().isBadRequest());
-
-        List<UGaleriji> uGalerijis = uGalerijiRepository.findAll();
-        assertThat(uGalerijis).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkStatusIsRequired() throws Exception {
-        int databaseSizeBeforeTest = uGalerijiRepository.findAll().size();
-        // set the field null
-        uGaleriji.setStatus(null);
 
         // Create the UGaleriji, which fails.
 
@@ -275,7 +257,6 @@ public class UGalerijiResourceIntTest {
                 .andExpect(jsonPath("$.[*].kontakt_prz").value(hasItem(DEFAULT_KONTAKT_PRZ.toString())))
                 .andExpect(jsonPath("$.[*].kontakt_broj").value(hasItem(DEFAULT_KONTAKT_BROJ)))
                 .andExpect(jsonPath("$.[*].kontakt_email").value(hasItem(DEFAULT_KONTAKT_EMAIL.toString())))
-                .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
                 .andExpect(jsonPath("$.[*].moderator_ime").value(hasItem(DEFAULT_MODERATOR_IME.toString())))
                 .andExpect(jsonPath("$.[*].moderator_prz").value(hasItem(DEFAULT_MODERATOR_PRZ.toString())))
                 .andExpect(jsonPath("$.[*].moderator_broj").value(hasItem(DEFAULT_MODERATOR_BROJ.toString())))
@@ -288,7 +269,8 @@ public class UGalerijiResourceIntTest {
                 .andExpect(jsonPath("$.[*].posecenost").value(hasItem(DEFAULT_POSECENOST)))
                 .andExpect(jsonPath("$.[*].tip").value(hasItem(DEFAULT_TIP.toString())))
                 .andExpect(jsonPath("$.[*].napomene").value(hasItem(DEFAULT_NAPOMENE.intValue())))
-                .andExpect(jsonPath("$.[*].datum").value(hasItem(DEFAULT_DATUM_STR)));
+                .andExpect(jsonPath("$.[*].datum").value(hasItem(DEFAULT_DATUM_STR)))
+                .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
 
     @Test
@@ -308,7 +290,6 @@ public class UGalerijiResourceIntTest {
             .andExpect(jsonPath("$.kontakt_prz").value(DEFAULT_KONTAKT_PRZ.toString()))
             .andExpect(jsonPath("$.kontakt_broj").value(DEFAULT_KONTAKT_BROJ))
             .andExpect(jsonPath("$.kontakt_email").value(DEFAULT_KONTAKT_EMAIL.toString()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.moderator_ime").value(DEFAULT_MODERATOR_IME.toString()))
             .andExpect(jsonPath("$.moderator_prz").value(DEFAULT_MODERATOR_PRZ.toString()))
             .andExpect(jsonPath("$.moderator_broj").value(DEFAULT_MODERATOR_BROJ.toString()))
@@ -321,7 +302,8 @@ public class UGalerijiResourceIntTest {
             .andExpect(jsonPath("$.posecenost").value(DEFAULT_POSECENOST))
             .andExpect(jsonPath("$.tip").value(DEFAULT_TIP.toString()))
             .andExpect(jsonPath("$.napomene").value(DEFAULT_NAPOMENE.intValue()))
-            .andExpect(jsonPath("$.datum").value(DEFAULT_DATUM_STR));
+            .andExpect(jsonPath("$.datum").value(DEFAULT_DATUM_STR))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
 
     @Test
@@ -348,7 +330,6 @@ public class UGalerijiResourceIntTest {
         updatedUGaleriji.setKontakt_prz(UPDATED_KONTAKT_PRZ);
         updatedUGaleriji.setKontakt_broj(UPDATED_KONTAKT_BROJ);
         updatedUGaleriji.setKontakt_email(UPDATED_KONTAKT_EMAIL);
-        updatedUGaleriji.setStatus(UPDATED_STATUS);
         updatedUGaleriji.setModerator_ime(UPDATED_MODERATOR_IME);
         updatedUGaleriji.setModerator_prz(UPDATED_MODERATOR_PRZ);
         updatedUGaleriji.setModerator_broj(UPDATED_MODERATOR_BROJ);
@@ -362,6 +343,7 @@ public class UGalerijiResourceIntTest {
         updatedUGaleriji.setTip(UPDATED_TIP);
         updatedUGaleriji.setNapomene(UPDATED_NAPOMENE);
         updatedUGaleriji.setDatum(UPDATED_DATUM);
+        updatedUGaleriji.setStatus(UPDATED_STATUS);
 
         restUGalerijiMockMvc.perform(put("/api/u-galerijis")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -378,7 +360,6 @@ public class UGalerijiResourceIntTest {
         assertThat(testUGaleriji.getKontakt_prz()).isEqualTo(UPDATED_KONTAKT_PRZ);
         assertThat(testUGaleriji.getKontakt_broj()).isEqualTo(UPDATED_KONTAKT_BROJ);
         assertThat(testUGaleriji.getKontakt_email()).isEqualTo(UPDATED_KONTAKT_EMAIL);
-        assertThat(testUGaleriji.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testUGaleriji.getModerator_ime()).isEqualTo(UPDATED_MODERATOR_IME);
         assertThat(testUGaleriji.getModerator_prz()).isEqualTo(UPDATED_MODERATOR_PRZ);
         assertThat(testUGaleriji.getModerator_broj()).isEqualTo(UPDATED_MODERATOR_BROJ);
@@ -392,6 +373,7 @@ public class UGalerijiResourceIntTest {
         assertThat(testUGaleriji.getTip()).isEqualTo(UPDATED_TIP);
         assertThat(testUGaleriji.getNapomene()).isEqualTo(UPDATED_NAPOMENE);
         assertThat(testUGaleriji.getDatum()).isEqualTo(UPDATED_DATUM);
+        assertThat(testUGaleriji.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test

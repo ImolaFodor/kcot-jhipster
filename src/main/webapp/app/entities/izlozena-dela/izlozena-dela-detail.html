@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span translate="kcotApp.izlozena_dela.detail.title">Izlozena Dela</span> {{vm.izlozena_dela.id}}</h2>
+    <h2><span translate="kcotApp.izlozena_dela.detail.title">Izložena dela</span> {{vm.izlozena_dela.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
@@ -12,11 +12,11 @@
         <dd>
             <span>{{vm.izlozena_dela.opis}}</span>
         </dd>
-        <dt><span translate="kcotApp.izlozena_dela.umetnickoDelo">Umetnicko Delo</span></dt>
+        <dt><span translate="kcotApp.izlozena_dela.umetnickoDelo">Umetničko delo</span></dt>
         <dd>
             <a ui-sref="umetnicko-delo-detail({id:vm.izlozena_dela.umetnickoDelo.id})">{{vm.izlozena_dela.umetnickoDelo.naziv}}</a>
         </dd>
-        <dt><span translate="kcotApp.izlozena_dela.uGaleriji">U Galeriji</span></dt>
+        <dt><span translate="kcotApp.izlozena_dela.uGaleriji">Događaj</span></dt>
         <dd>
             <a ui-sref="u-galeriji-detail({id:vm.izlozena_dela.uGaleriji.id})">{{vm.izlozena_dela.uGaleriji.naziv}}</a>
         </dd>
@@ -25,6 +25,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Nazad</span>
     </button>
 </div>

@@ -4,7 +4,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myIzlozena_delaLabel" translate="kcotApp.izlozena_dela.home.createOrEditLabel">Create or edit a Izlozena Dela</h4>
+        <h4 class="modal-title" id="myIzlozena_delaLabel" translate="kcotApp.izlozena_dela.home.createOrEditLabel">Kreiraj ili modifikuj izloženo delo </h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            <label translate="kcotApp.izlozena_dela.umetnickoDelo" for="field_umetnickoDelo">Umetnicko Delo</label>
+            <label translate="kcotApp.izlozena_dela.umetnickoDelo" for="field_umetnickoDelo">Umetničko delo</label>
             <select class="form-control" id="field_umetnickoDelo" name="umetnickoDelo" ng-model="vm.izlozena_dela.umetnickoDelo" ng-options="umetnickoDelo as umetnickoDelo.naziv for umetnickoDelo in vm.umetnickodelos track by umetnickoDelo.id" required>
                 <option value=""></option>
             </select>
@@ -35,11 +35,11 @@
         <div ng-show="editForm.umetnickoDelo.$invalid">
             <p class="help-block"
                 ng-show="editForm.umetnickoDelo.$error.required">
-                This field is required.
+                Ovo polje je obavezno.
             </p>
         </div>
         <div class="form-group">
-            <label translate="kcotApp.izlozena_dela.uGaleriji" for="field_uGaleriji">U Galeriji</label>
+            <label translate="kcotApp.izlozena_dela.uGaleriji" for="field_uGaleriji">Događaj</label>
             <select class="form-control" id="field_uGaleriji" name="uGaleriji" ng-model="vm.izlozena_dela.uGaleriji" ng-options="uGaleriji as uGaleriji.naziv for uGaleriji in vm.ugalerijis track by uGaleriji.id" required>
                 <option value=""></option>
             </select>
@@ -47,16 +47,16 @@
         <div ng-show="editForm.uGaleriji.$invalid">
             <p class="help-block"
                 ng-show="editForm.uGaleriji.$error.required">
-                This field is required.
+                Ovo polje je obavezno.
             </p>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Otkaži</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Sačuvaj</span>
         </button>
     </div>
 </form>

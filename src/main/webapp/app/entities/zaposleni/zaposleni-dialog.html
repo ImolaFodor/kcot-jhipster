@@ -21,19 +21,19 @@
             <div ng-show="editForm.ime.$invalid">
                 <p class="help-block"
                     ng-show="editForm.ime.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_prz">Prz</label>
+            <label class="control-label" for="field_prz">Prezime</label>
             <input type="text" class="form-control" name="prz" id="field_prz"
                     ng-model="vm.zaposleni.prz"
                     required />
             <div ng-show="editForm.prz.$invalid">
                 <p class="help-block"
                     ng-show="editForm.prz.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
             </div>
         </div>
@@ -59,7 +59,7 @@
             <div ng-show="editForm.tip.$invalid">
                 <p class="help-block"
                     ng-show="editForm.tip.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
             </div>
         </div>
@@ -67,10 +67,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Otkaži</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Sačuvaj</span>
         </button>
     </div>
 </form>

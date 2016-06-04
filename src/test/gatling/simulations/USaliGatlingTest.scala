@@ -67,7 +67,7 @@ class USaliGatlingTest extends Simulation {
             .exec(http("Create new uSali")
             .post("/api/u-salis")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "naziv":"SAMPLE_TEXT", "poslovna_godina":"0", "kontakt_ime":"SAMPLE_TEXT", "kontakt_prz":"SAMPLE_TEXT", "kontakt_broj":"0", "kontakt_email":"SAMPLE_TEXT", "status":null, "zarada":"0", "prihod":"0", "procenat":"0", "posecenost":"0", "titl":null, "oprema":null, "napomene":null, "datum":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "naziv":"SAMPLE_TEXT", "poslovna_godina":"0", "kontakt_ime":"SAMPLE_TEXT", "kontakt_prz":"SAMPLE_TEXT", "kontakt_broj":"0", "kontakt_email":"SAMPLE_TEXT", "zarada":"0", "prihod":"0", "procenat":"0", "posecenost":"0", "titl":null, "oprema":null, "napomene":null, "datum":"2020-01-01T00:00:00.000Z", "status":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_uSali_url"))).exitHereIfFailed
             .pause(10)
