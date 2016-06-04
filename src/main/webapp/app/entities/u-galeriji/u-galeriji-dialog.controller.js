@@ -5,14 +5,11 @@
         .module('kcotApp')
         .controller('UGalerijiDialogController', UGalerijiDialogController);
 
-    UGalerijiDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'UGaleriji', 'Izlozena_dela', 'Donirana_dela', 'Pozvani'];
+    UGalerijiDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'UGaleriji'];
 
-    function UGalerijiDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, UGaleriji, Izlozena_dela, Donirana_dela, Pozvani) {
+    function UGalerijiDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, UGaleriji) {
         var vm = this;
         vm.uGaleriji = entity;
-        vm.izlozena_delas = Izlozena_dela.query();
-        vm.donirana_delas = Donirana_dela.query();
-        vm.pozvanis = Pozvani.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

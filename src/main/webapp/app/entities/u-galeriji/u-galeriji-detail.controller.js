@@ -5,9 +5,9 @@
         .module('kcotApp')
         .controller('UGalerijiDetailController', UGalerijiDetailController);
 
-    UGalerijiDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'UGaleriji', 'Izlozena_dela', 'Donirana_dela', 'Pozvani'];
+    UGalerijiDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'UGaleriji'];
 
-    function UGalerijiDetailController($scope, $rootScope, $stateParams, entity, UGaleriji, Izlozena_dela, Donirana_dela, Pozvani) {
+    function UGalerijiDetailController($scope, $rootScope, $stateParams, entity, UGaleriji) {
         var vm = this;
         vm.uGaleriji = entity;
         

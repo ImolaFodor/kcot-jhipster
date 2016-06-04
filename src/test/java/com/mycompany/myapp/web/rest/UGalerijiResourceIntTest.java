@@ -23,7 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -45,11 +47,10 @@ import com.mycompany.myapp.domain.enumeration.Tip;
 @IntegrationTest
 public class UGalerijiResourceIntTest {
 
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").withZone(ZoneId.of("Z"));
+
     private static final String DEFAULT_NAZIV = "AAAAA";
     private static final String UPDATED_NAZIV = "BBBBB";
-
-    private static final LocalDate DEFAULT_DATUM = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATUM = LocalDate.now(ZoneId.systemDefault());
 
     private static final Integer DEFAULT_POSLOVNA_GODINA = 1;
     private static final Integer UPDATED_POSLOVNA_GODINA = 2;
@@ -95,6 +96,10 @@ public class UGalerijiResourceIntTest {
     private static final Long DEFAULT_NAPOMENE = 1L;
     private static final Long UPDATED_NAPOMENE = 2L;
 
+    private static final ZonedDateTime DEFAULT_DATUM = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_DATUM = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_DATUM_STR = dateTimeFormatter.format(DEFAULT_DATUM);
+
     @Inject
     private UGalerijiRepository uGalerijiRepository;
 
@@ -122,7 +127,6 @@ public class UGalerijiResourceIntTest {
     public void initTest() {
         uGaleriji = new UGaleriji();
         uGaleriji.setNaziv(DEFAULT_NAZIV);
-        uGaleriji.setDatum(DEFAULT_DATUM);
         uGaleriji.setPoslovna_godina(DEFAULT_POSLOVNA_GODINA);
         uGaleriji.setKontakt_ime(DEFAULT_KONTAKT_IME);
         uGaleriji.setKontakt_prz(DEFAULT_KONTAKT_PRZ);
@@ -141,6 +145,7 @@ public class UGalerijiResourceIntTest {
         uGaleriji.setPosecenost(DEFAULT_POSECENOST);
         uGaleriji.setTip(DEFAULT_TIP);
         uGaleriji.setNapomene(DEFAULT_NAPOMENE);
+        uGaleriji.setDatum(DEFAULT_DATUM);
     }
 
     @Test
@@ -160,7 +165,6 @@ public class UGalerijiResourceIntTest {
         assertThat(uGalerijis).hasSize(databaseSizeBeforeCreate + 1);
         UGaleriji testUGaleriji = uGalerijis.get(uGalerijis.size() - 1);
         assertThat(testUGaleriji.getNaziv()).isEqualTo(DEFAULT_NAZIV);
-        assertThat(testUGaleriji.getDatum()).isEqualTo(DEFAULT_DATUM);
         assertThat(testUGaleriji.getPoslovna_godina()).isEqualTo(DEFAULT_POSLOVNA_GODINA);
         assertThat(testUGaleriji.getKontakt_ime()).isEqualTo(DEFAULT_KONTAKT_IME);
         assertThat(testUGaleriji.getKontakt_prz()).isEqualTo(DEFAULT_KONTAKT_PRZ);
@@ -179,6 +183,7 @@ public class UGalerijiResourceIntTest {
         assertThat(testUGaleriji.getPosecenost()).isEqualTo(DEFAULT_POSECENOST);
         assertThat(testUGaleriji.getTip()).isEqualTo(DEFAULT_TIP);
         assertThat(testUGaleriji.getNapomene()).isEqualTo(DEFAULT_NAPOMENE);
+        assertThat(testUGaleriji.getDatum()).isEqualTo(DEFAULT_DATUM);
     }
 
     @Test
@@ -265,7 +270,6 @@ public class UGalerijiResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(uGaleriji.getId().intValue())))
                 .andExpect(jsonPath("$.[*].naziv").value(hasItem(DEFAULT_NAZIV.toString())))
-                .andExpect(jsonPath("$.[*].datum").value(hasItem(DEFAULT_DATUM.toString())))
                 .andExpect(jsonPath("$.[*].poslovna_godina").value(hasItem(DEFAULT_POSLOVNA_GODINA)))
                 .andExpect(jsonPath("$.[*].kontakt_ime").value(hasItem(DEFAULT_KONTAKT_IME.toString())))
                 .andExpect(jsonPath("$.[*].kontakt_prz").value(hasItem(DEFAULT_KONTAKT_PRZ.toString())))
@@ -283,7 +287,8 @@ public class UGalerijiResourceIntTest {
                 .andExpect(jsonPath("$.[*].zarada").value(hasItem(DEFAULT_ZARADA)))
                 .andExpect(jsonPath("$.[*].posecenost").value(hasItem(DEFAULT_POSECENOST)))
                 .andExpect(jsonPath("$.[*].tip").value(hasItem(DEFAULT_TIP.toString())))
-                .andExpect(jsonPath("$.[*].napomene").value(hasItem(DEFAULT_NAPOMENE.intValue())));
+                .andExpect(jsonPath("$.[*].napomene").value(hasItem(DEFAULT_NAPOMENE.intValue())))
+                .andExpect(jsonPath("$.[*].datum").value(hasItem(DEFAULT_DATUM_STR)));
     }
 
     @Test
@@ -298,7 +303,6 @@ public class UGalerijiResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(uGaleriji.getId().intValue()))
             .andExpect(jsonPath("$.naziv").value(DEFAULT_NAZIV.toString()))
-            .andExpect(jsonPath("$.datum").value(DEFAULT_DATUM.toString()))
             .andExpect(jsonPath("$.poslovna_godina").value(DEFAULT_POSLOVNA_GODINA))
             .andExpect(jsonPath("$.kontakt_ime").value(DEFAULT_KONTAKT_IME.toString()))
             .andExpect(jsonPath("$.kontakt_prz").value(DEFAULT_KONTAKT_PRZ.toString()))
@@ -316,7 +320,8 @@ public class UGalerijiResourceIntTest {
             .andExpect(jsonPath("$.zarada").value(DEFAULT_ZARADA))
             .andExpect(jsonPath("$.posecenost").value(DEFAULT_POSECENOST))
             .andExpect(jsonPath("$.tip").value(DEFAULT_TIP.toString()))
-            .andExpect(jsonPath("$.napomene").value(DEFAULT_NAPOMENE.intValue()));
+            .andExpect(jsonPath("$.napomene").value(DEFAULT_NAPOMENE.intValue()))
+            .andExpect(jsonPath("$.datum").value(DEFAULT_DATUM_STR));
     }
 
     @Test
@@ -338,7 +343,6 @@ public class UGalerijiResourceIntTest {
         UGaleriji updatedUGaleriji = new UGaleriji();
         updatedUGaleriji.setId(uGaleriji.getId());
         updatedUGaleriji.setNaziv(UPDATED_NAZIV);
-        updatedUGaleriji.setDatum(UPDATED_DATUM);
         updatedUGaleriji.setPoslovna_godina(UPDATED_POSLOVNA_GODINA);
         updatedUGaleriji.setKontakt_ime(UPDATED_KONTAKT_IME);
         updatedUGaleriji.setKontakt_prz(UPDATED_KONTAKT_PRZ);
@@ -357,6 +361,7 @@ public class UGalerijiResourceIntTest {
         updatedUGaleriji.setPosecenost(UPDATED_POSECENOST);
         updatedUGaleriji.setTip(UPDATED_TIP);
         updatedUGaleriji.setNapomene(UPDATED_NAPOMENE);
+        updatedUGaleriji.setDatum(UPDATED_DATUM);
 
         restUGalerijiMockMvc.perform(put("/api/u-galerijis")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -368,7 +373,6 @@ public class UGalerijiResourceIntTest {
         assertThat(uGalerijis).hasSize(databaseSizeBeforeUpdate);
         UGaleriji testUGaleriji = uGalerijis.get(uGalerijis.size() - 1);
         assertThat(testUGaleriji.getNaziv()).isEqualTo(UPDATED_NAZIV);
-        assertThat(testUGaleriji.getDatum()).isEqualTo(UPDATED_DATUM);
         assertThat(testUGaleriji.getPoslovna_godina()).isEqualTo(UPDATED_POSLOVNA_GODINA);
         assertThat(testUGaleriji.getKontakt_ime()).isEqualTo(UPDATED_KONTAKT_IME);
         assertThat(testUGaleriji.getKontakt_prz()).isEqualTo(UPDATED_KONTAKT_PRZ);
@@ -387,6 +391,7 @@ public class UGalerijiResourceIntTest {
         assertThat(testUGaleriji.getPosecenost()).isEqualTo(UPDATED_POSECENOST);
         assertThat(testUGaleriji.getTip()).isEqualTo(UPDATED_TIP);
         assertThat(testUGaleriji.getNapomene()).isEqualTo(UPDATED_NAPOMENE);
+        assertThat(testUGaleriji.getDatum()).isEqualTo(UPDATED_DATUM);
     }
 
     @Test

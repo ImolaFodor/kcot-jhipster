@@ -20,7 +20,6 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="naziv"><span>Naziv</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="datum"><span>Datum</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="poslovna_godina"><span translate="kcotApp.uSali.poslovna_godina">Poslovna Godina</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="kontakt_ime"><span translate="kcotApp.uSali.kontakt_ime">Kontakt Ime</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="kontakt_prz"><span translate="kcotApp.uSali.kontakt_prz">Kontakt Prz</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -34,6 +33,7 @@
                     <th jh-sort-by="titl"><span>Titl</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="oprema"><span>Oprema</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="napomene"><span>Napomene</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datum"><span>Datum</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -41,7 +41,6 @@
                 <tr ng-repeat="uSali in vm.uSalis track by uSali.id">
                     <td><a ui-sref="u-sali-detail({id:uSali.id})">{{uSali.id}}</a></td>
                     <td>{{uSali.naziv}}</td>
-                        <td>{{uSali.datum | date:'mediumDate'}}</td>
                     <td>{{uSali.poslovna_godina}}</td>
                     <td>{{uSali.kontakt_ime}}</td>
                     <td>{{uSali.kontakt_prz}}</td>
@@ -55,6 +54,7 @@
                     <td>{{uSali.titl}}</td>
                     <td>{{uSali.oprema}}</td>
                     <td>{{uSali.napomene}}</td>
+                    <td>{{uSali.datum | date:'medium'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

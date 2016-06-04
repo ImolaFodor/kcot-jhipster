@@ -1,19 +1,17 @@
 package com.mycompany.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mycompany.myapp.domain.enumeration.Status;
-import com.mycompany.myapp.domain.enumeration.Tip;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashSet;
+import java.time.ZonedDateTime;
 import java.util.Objects;
-import java.util.Set;
+
+import com.mycompany.myapp.domain.enumeration.Status;
+
+import com.mycompany.myapp.domain.enumeration.Tip;
 
 /**
  * A UGaleriji.
@@ -32,9 +30,6 @@ public class UGaleriji implements Serializable {
     @NotNull
     @Column(name = "naziv", nullable = false)
     private String naziv;
-
-    @Column(name = "datum")
-    private Date datum;
 
     @NotNull
     @Column(name = "poslovna_godina", nullable = false)
@@ -95,20 +90,8 @@ public class UGaleriji implements Serializable {
     @Column(name = "napomene")
     private Long napomene;
 
-    @OneToMany(mappedBy = "uGaleriji")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Izlozena_Dela> izlozena_delas = new HashSet<>();
-
-    @OneToMany(mappedBy = "uGaleriji")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Donirana_dela> donirana_delas = new HashSet<>();
-
-    @OneToMany(mappedBy = "uGaleriji")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Pozvani> pozvanis = new HashSet<>();
+    @Column(name = "datum")
+    private ZonedDateTime datum;
 
     public Long getId() {
         return id;
@@ -124,14 +107,6 @@ public class UGaleriji implements Serializable {
 
     public void setNaziv(String naziv) {
         this.naziv = naziv;
-    }
-
-    public Date getDatum() {
-        return datum;
-    }
-
-    public void setDatum(Date datum) {
-        this.datum = datum;
     }
 
     public Integer getPoslovna_godina() {
@@ -278,28 +253,12 @@ public class UGaleriji implements Serializable {
         this.napomene = napomene;
     }
 
-    public Set<Izlozena_Dela> getIzlozena_delas() {
-        return izlozena_delas;
+    public ZonedDateTime getDatum() {
+        return datum;
     }
 
-    public void setIzlozena_delas(Set<Izlozena_Dela> izlozena_delas) {
-        this.izlozena_delas = izlozena_delas;
-    }
-
-    public Set<Donirana_dela> getDonirana_delas() {
-        return donirana_delas;
-    }
-
-    public void setDonirana_delas(Set<Donirana_dela> donirana_delas) {
-        this.donirana_delas = donirana_delas;
-    }
-
-    public Set<Pozvani> getPozvanis() {
-        return pozvanis;
-    }
-
-    public void setPozvanis(Set<Pozvani> pozvanis) {
-        this.pozvanis = pozvanis;
+    public void setDatum(ZonedDateTime datum) {
+        this.datum = datum;
     }
 
     @Override
@@ -327,7 +286,6 @@ public class UGaleriji implements Serializable {
         return "UGaleriji{" +
             "id=" + id +
             ", naziv='" + naziv + "'" +
-            ", datum='" + datum + "'" +
             ", poslovna_godina='" + poslovna_godina + "'" +
             ", kontakt_ime='" + kontakt_ime + "'" +
             ", kontakt_prz='" + kontakt_prz + "'" +
@@ -346,6 +304,7 @@ public class UGaleriji implements Serializable {
             ", posecenost='" + posecenost + "'" +
             ", tip='" + tip + "'" +
             ", napomene='" + napomene + "'" +
+            ", datum='" + datum + "'" +
             '}';
     }
 }

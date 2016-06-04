@@ -1,15 +1,12 @@
 package com.mycompany.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 import com.mycompany.myapp.domain.enumeration.Status;
@@ -31,9 +28,6 @@ public class USali implements Serializable {
     @NotNull
     @Column(name = "naziv", nullable = false)
     private String naziv;
-
-    @Column(name = "datum")
-    private LocalDate datum;
 
     @NotNull
     @Column(name = "poslovna_godina", nullable = false)
@@ -77,10 +71,8 @@ public class USali implements Serializable {
     @Column(name = "napomene")
     private Long napomene;
 
-    @OneToMany(mappedBy = "uSali")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<RezervacijaProdaja> rezervacijaProdajas = new HashSet<>();
+    @Column(name = "datum")
+    private ZonedDateTime datum;
 
     public Long getId() {
         return id;
@@ -96,14 +88,6 @@ public class USali implements Serializable {
 
     public void setNaziv(String naziv) {
         this.naziv = naziv;
-    }
-
-    public LocalDate getDatum() {
-        return datum;
-    }
-
-    public void setDatum(LocalDate datum) {
-        this.datum = datum;
     }
 
     public Integer getPoslovna_godina() {
@@ -210,12 +194,12 @@ public class USali implements Serializable {
         this.napomene = napomene;
     }
 
-    public Set<RezervacijaProdaja> getRezervacijaProdajas() {
-        return rezervacijaProdajas;
+    public ZonedDateTime getDatum() {
+        return datum;
     }
 
-    public void setRezervacijaProdajas(Set<RezervacijaProdaja> rezervacijaProdajas) {
-        this.rezervacijaProdajas = rezervacijaProdajas;
+    public void setDatum(ZonedDateTime datum) {
+        this.datum = datum;
     }
 
     @Override
@@ -243,7 +227,6 @@ public class USali implements Serializable {
         return "USali{" +
             "id=" + id +
             ", naziv='" + naziv + "'" +
-            ", datum='" + datum + "'" +
             ", poslovna_godina='" + poslovna_godina + "'" +
             ", kontakt_ime='" + kontakt_ime + "'" +
             ", kontakt_prz='" + kontakt_prz + "'" +
@@ -257,6 +240,7 @@ public class USali implements Serializable {
             ", titl='" + titl + "'" +
             ", oprema='" + oprema + "'" +
             ", napomene='" + napomene + "'" +
+            ", datum='" + datum + "'" +
             '}';
     }
 }

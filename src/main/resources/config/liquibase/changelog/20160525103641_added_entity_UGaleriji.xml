@@ -25,10 +25,6 @@
                 <constraints nullable="false" />
             </column>
             
-            <column name="datum" type="date">
-                <constraints nullable="true" />
-            </column>
-            
             <column name="poslovna_godina" type="integer">
                 <constraints nullable="false" />
             </column>
@@ -101,8 +97,13 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="datum" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="u_galeriji" columnName="datum" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

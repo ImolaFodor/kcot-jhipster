@@ -1,12 +1,5 @@
 {
-    "relationships": [
-        {
-            "relationshipName": "rezervacijaProdaja",
-            "otherEntityName": "rezervacijaProdaja",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "uSali"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "naziv",
@@ -14,10 +7,6 @@
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "datum",
-            "fieldType": "LocalDate"
         },
         {
             "fieldName": "poslovna_godina",
@@ -77,6 +66,10 @@
         {
             "fieldName": "napomene",
             "fieldType": "Long"
+        },
+        {
+            "fieldName": "datum",
+            "fieldType": "ZonedDateTime"
         }
     ],
     "changelogDate": "20160525111900",

@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('UGaleriji Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockUGaleriji, MockIzlozena_dela, MockDonirana_dela, MockPozvani;
+        var MockEntity, MockUGaleriji;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,19 +12,13 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockUGaleriji = jasmine.createSpy('MockUGaleriji');
-            MockIzlozena_dela = jasmine.createSpy('MockIzlozena_dela');
-            MockDonirana_dela = jasmine.createSpy('MockDonirana_dela');
-            MockPozvani = jasmine.createSpy('MockPozvani');
             
 
             var locals = {
                 '$scope': $scope,
                 '$rootScope': $rootScope,
                 'entity': MockEntity ,
-                'UGaleriji': MockUGaleriji,
-                'Izlozena_dela': MockIzlozena_dela,
-                'Donirana_dela': MockDonirana_dela,
-                'Pozvani': MockPozvani
+                'UGaleriji': MockUGaleriji
             };
             createController = function() {
                 $injector.get('$controller')("UGalerijiDetailController", locals);

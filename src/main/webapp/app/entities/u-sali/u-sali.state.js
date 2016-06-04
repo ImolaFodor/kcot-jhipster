@@ -83,7 +83,6 @@
                         entity: function () {
                             return {
                                 naziv: null,
-                                datum: null,
                                 poslovna_godina: null,
                                 kontakt_ime: null,
                                 kontakt_prz: null,
@@ -97,6 +96,7 @@
                                 titl: null,
                                 oprema: null,
                                 napomene: null,
+                                datum: null,
                                 id: null
                             };
                         }

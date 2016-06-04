@@ -1,24 +1,5 @@
 {
-    "relationships": [
-        {
-            "relationshipName": "izlozena_dela",
-            "otherEntityName": "izlozena_dela",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "uGaleriji"
-        },
-        {
-            "relationshipName": "donirana_dela",
-            "otherEntityName": "donirana_dela",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "uGaleriji"
-        },
-        {
-            "relationshipName": "pozvani",
-            "otherEntityName": "pozvani",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "uGaleriji"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "naziv",
@@ -26,10 +7,6 @@
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "datum",
-            "fieldType": "LocalDate"
         },
         {
             "fieldName": "poslovna_godina",
@@ -113,6 +90,10 @@
         {
             "fieldName": "napomene",
             "fieldType": "Long"
+        },
+        {
+            "fieldName": "datum",
+            "fieldType": "ZonedDateTime"
         }
     ],
     "changelogDate": "20160525103641",

@@ -5,12 +5,11 @@
         .module('kcotApp')
         .controller('USaliDialogController', USaliDialogController);
 
-    USaliDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'USali', 'RezervacijaProdaja'];
+    USaliDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'USali'];
 
-    function USaliDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, USali, RezervacijaProdaja) {
+    function USaliDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, USali) {
         var vm = this;
         vm.uSali = entity;
-        vm.rezervacijaprodajas = RezervacijaProdaja.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

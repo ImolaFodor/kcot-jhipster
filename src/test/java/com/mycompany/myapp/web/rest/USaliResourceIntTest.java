@@ -23,7 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -44,11 +46,10 @@ import com.mycompany.myapp.domain.enumeration.Status;
 @IntegrationTest
 public class USaliResourceIntTest {
 
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").withZone(ZoneId.of("Z"));
+
     private static final String DEFAULT_NAZIV = "AAAAA";
     private static final String UPDATED_NAZIV = "BBBBB";
-
-    private static final LocalDate DEFAULT_DATUM = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATUM = LocalDate.now(ZoneId.systemDefault());
 
     private static final Integer DEFAULT_POSLOVNA_GODINA = 1;
     private static final Integer UPDATED_POSLOVNA_GODINA = 2;
@@ -86,6 +87,10 @@ public class USaliResourceIntTest {
     private static final Long DEFAULT_NAPOMENE = 1L;
     private static final Long UPDATED_NAPOMENE = 2L;
 
+    private static final ZonedDateTime DEFAULT_DATUM = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_DATUM = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_DATUM_STR = dateTimeFormatter.format(DEFAULT_DATUM);
+
     @Inject
     private USaliRepository uSaliRepository;
 
@@ -113,7 +118,6 @@ public class USaliResourceIntTest {
     public void initTest() {
         uSali = new USali();
         uSali.setNaziv(DEFAULT_NAZIV);
-        uSali.setDatum(DEFAULT_DATUM);
         uSali.setPoslovna_godina(DEFAULT_POSLOVNA_GODINA);
         uSali.setKontakt_ime(DEFAULT_KONTAKT_IME);
         uSali.setKontakt_prz(DEFAULT_KONTAKT_PRZ);
@@ -127,6 +131,7 @@ public class USaliResourceIntTest {
         uSali.setTitl(DEFAULT_TITL);
         uSali.setOprema(DEFAULT_OPREMA);
         uSali.setNapomene(DEFAULT_NAPOMENE);
+        uSali.setDatum(DEFAULT_DATUM);
     }
 
     @Test
@@ -146,7 +151,6 @@ public class USaliResourceIntTest {
         assertThat(uSalis).hasSize(databaseSizeBeforeCreate + 1);
         USali testUSali = uSalis.get(uSalis.size() - 1);
         assertThat(testUSali.getNaziv()).isEqualTo(DEFAULT_NAZIV);
-        assertThat(testUSali.getDatum()).isEqualTo(DEFAULT_DATUM);
         assertThat(testUSali.getPoslovna_godina()).isEqualTo(DEFAULT_POSLOVNA_GODINA);
         assertThat(testUSali.getKontakt_ime()).isEqualTo(DEFAULT_KONTAKT_IME);
         assertThat(testUSali.getKontakt_prz()).isEqualTo(DEFAULT_KONTAKT_PRZ);
@@ -160,6 +164,7 @@ public class USaliResourceIntTest {
         assertThat(testUSali.isTitl()).isEqualTo(DEFAULT_TITL);
         assertThat(testUSali.isOprema()).isEqualTo(DEFAULT_OPREMA);
         assertThat(testUSali.getNapomene()).isEqualTo(DEFAULT_NAPOMENE);
+        assertThat(testUSali.getDatum()).isEqualTo(DEFAULT_DATUM);
     }
 
     @Test
@@ -228,7 +233,6 @@ public class USaliResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(uSali.getId().intValue())))
                 .andExpect(jsonPath("$.[*].naziv").value(hasItem(DEFAULT_NAZIV.toString())))
-                .andExpect(jsonPath("$.[*].datum").value(hasItem(DEFAULT_DATUM.toString())))
                 .andExpect(jsonPath("$.[*].poslovna_godina").value(hasItem(DEFAULT_POSLOVNA_GODINA)))
                 .andExpect(jsonPath("$.[*].kontakt_ime").value(hasItem(DEFAULT_KONTAKT_IME.toString())))
                 .andExpect(jsonPath("$.[*].kontakt_prz").value(hasItem(DEFAULT_KONTAKT_PRZ.toString())))
@@ -241,7 +245,8 @@ public class USaliResourceIntTest {
                 .andExpect(jsonPath("$.[*].posecenost").value(hasItem(DEFAULT_POSECENOST)))
                 .andExpect(jsonPath("$.[*].titl").value(hasItem(DEFAULT_TITL.booleanValue())))
                 .andExpect(jsonPath("$.[*].oprema").value(hasItem(DEFAULT_OPREMA.booleanValue())))
-                .andExpect(jsonPath("$.[*].napomene").value(hasItem(DEFAULT_NAPOMENE.intValue())));
+                .andExpect(jsonPath("$.[*].napomene").value(hasItem(DEFAULT_NAPOMENE.intValue())))
+                .andExpect(jsonPath("$.[*].datum").value(hasItem(DEFAULT_DATUM_STR)));
     }
 
     @Test
@@ -256,7 +261,6 @@ public class USaliResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(uSali.getId().intValue()))
             .andExpect(jsonPath("$.naziv").value(DEFAULT_NAZIV.toString()))
-            .andExpect(jsonPath("$.datum").value(DEFAULT_DATUM.toString()))
             .andExpect(jsonPath("$.poslovna_godina").value(DEFAULT_POSLOVNA_GODINA))
             .andExpect(jsonPath("$.kontakt_ime").value(DEFAULT_KONTAKT_IME.toString()))
             .andExpect(jsonPath("$.kontakt_prz").value(DEFAULT_KONTAKT_PRZ.toString()))
@@ -269,7 +273,8 @@ public class USaliResourceIntTest {
             .andExpect(jsonPath("$.posecenost").value(DEFAULT_POSECENOST))
             .andExpect(jsonPath("$.titl").value(DEFAULT_TITL.booleanValue()))
             .andExpect(jsonPath("$.oprema").value(DEFAULT_OPREMA.booleanValue()))
-            .andExpect(jsonPath("$.napomene").value(DEFAULT_NAPOMENE.intValue()));
+            .andExpect(jsonPath("$.napomene").value(DEFAULT_NAPOMENE.intValue()))
+            .andExpect(jsonPath("$.datum").value(DEFAULT_DATUM_STR));
     }
 
     @Test
@@ -291,7 +296,6 @@ public class USaliResourceIntTest {
         USali updatedUSali = new USali();
         updatedUSali.setId(uSali.getId());
         updatedUSali.setNaziv(UPDATED_NAZIV);
-        updatedUSali.setDatum(UPDATED_DATUM);
         updatedUSali.setPoslovna_godina(UPDATED_POSLOVNA_GODINA);
         updatedUSali.setKontakt_ime(UPDATED_KONTAKT_IME);
         updatedUSali.setKontakt_prz(UPDATED_KONTAKT_PRZ);
@@ -305,6 +309,7 @@ public class USaliResourceIntTest {
         updatedUSali.setTitl(UPDATED_TITL);
         updatedUSali.setOprema(UPDATED_OPREMA);
         updatedUSali.setNapomene(UPDATED_NAPOMENE);
+        updatedUSali.setDatum(UPDATED_DATUM);
 
         restUSaliMockMvc.perform(put("/api/u-salis")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -316,7 +321,6 @@ public class USaliResourceIntTest {
         assertThat(uSalis).hasSize(databaseSizeBeforeUpdate);
         USali testUSali = uSalis.get(uSalis.size() - 1);
         assertThat(testUSali.getNaziv()).isEqualTo(UPDATED_NAZIV);
-        assertThat(testUSali.getDatum()).isEqualTo(UPDATED_DATUM);
         assertThat(testUSali.getPoslovna_godina()).isEqualTo(UPDATED_POSLOVNA_GODINA);
         assertThat(testUSali.getKontakt_ime()).isEqualTo(UPDATED_KONTAKT_IME);
         assertThat(testUSali.getKontakt_prz()).isEqualTo(UPDATED_KONTAKT_PRZ);
@@ -330,6 +334,7 @@ public class USaliResourceIntTest {
         assertThat(testUSali.isTitl()).isEqualTo(UPDATED_TITL);
         assertThat(testUSali.isOprema()).isEqualTo(UPDATED_OPREMA);
         assertThat(testUSali.getNapomene()).isEqualTo(UPDATED_NAPOMENE);
+        assertThat(testUSali.getDatum()).isEqualTo(UPDATED_DATUM);
     }
 
     @Test
