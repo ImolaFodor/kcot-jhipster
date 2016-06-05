@@ -14,7 +14,7 @@
             url: '/sediste?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Sedišta'
+                pageTitle: 'Sedistes'
             },
             views: {
                 'content@': {

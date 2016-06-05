@@ -5,9 +5,9 @@
         .module('kcotApp')
         .controller('USaliDetailController', USaliDetailController);
 
-    USaliDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'USali'];
+    USaliDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'USali', 'RezervacijaProdaja'];
 
-    function USaliDetailController($scope, $rootScope, $stateParams, entity, USali) {
+    function USaliDetailController($scope, $rootScope, $stateParams, entity, USali, RezervacijaProdaja) {
         var vm = this;
         vm.uSali = entity;
         

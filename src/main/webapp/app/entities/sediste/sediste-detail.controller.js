@@ -5,9 +5,9 @@
         .module('kcotApp')
         .controller('SedisteDetailController', SedisteDetailController);
 
-    SedisteDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Sediste'];
+    SedisteDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Sediste', 'RezervisanoSediste'];
 
-    function SedisteDetailController($scope, $rootScope, $stateParams, entity, Sediste) {
+    function SedisteDetailController($scope, $rootScope, $stateParams, entity, Sediste, RezervisanoSediste) {
         var vm = this;
         vm.sediste = entity;
         

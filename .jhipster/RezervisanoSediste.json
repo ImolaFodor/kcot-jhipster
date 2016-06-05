@@ -10,7 +10,7 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "rezervacijaProdaja",
+            "relationshipName": "rezsed",
             "otherEntityName": "rezervacijaProdaja",
             "relationshipType": "many-to-one",
             "relationshipValidateRules": [

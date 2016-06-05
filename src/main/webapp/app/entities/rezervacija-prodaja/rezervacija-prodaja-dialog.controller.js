@@ -5,15 +5,16 @@
         .module('kcotApp')
         .controller('RezervacijaProdajaDialogController', RezervacijaProdajaDialogController);
 
-    RezervacijaProdajaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'RezervacijaProdaja', 'Gost', 'Skola', 'USali', 'Zaposleni'];
+    RezervacijaProdajaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'RezervacijaProdaja', 'Gost', 'Skola', 'Zaposleni', 'USali', 'RezervisanoSediste'];
 
-    function RezervacijaProdajaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, RezervacijaProdaja, Gost, Skola, USali, Zaposleni) {
+    function RezervacijaProdajaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, RezervacijaProdaja, Gost, Skola, Zaposleni, USali, RezervisanoSediste) {
         var vm = this;
         vm.rezervacijaProdaja = entity;
         vm.gosts = Gost.query();
         vm.skolas = Skola.query();
-        vm.usalis = USali.query();
         vm.zaposlenis = Zaposleni.query();
+        vm.usalis = USali.query();
+        vm.rezervisanosedistes = RezervisanoSediste.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -31,11 +32,9 @@
 
         vm.save = function () {
             vm.isSaving = true;
-            console.log(vm.rezervacijaProdaja);
             if (vm.rezervacijaProdaja.id !== null) {
                 RezervacijaProdaja.update(vm.rezervacijaProdaja, onSaveSuccess, onSaveError);
             } else {
-
                 RezervacijaProdaja.save(vm.rezervacijaProdaja, onSaveSuccess, onSaveError);
             }
         };

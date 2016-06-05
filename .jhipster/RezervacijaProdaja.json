@@ -14,15 +14,6 @@
             "otherEntityField": "naziv"
         },
         {
-            "relationshipName": "uSali",
-            "otherEntityName": "uSali",
-            "relationshipType": "many-to-one",
-            "relationshipValidateRules": [
-                "required"
-            ],
-            "otherEntityField": "naziv"
-        },
-        {
             "relationshipName": "obavio_rez",
             "otherEntityName": "zaposleni",
             "relationshipType": "many-to-one",
@@ -33,6 +24,21 @@
             "otherEntityName": "zaposleni",
             "relationshipType": "many-to-one",
             "otherEntityField": "ime"
+        },
+        {
+            "relationshipName": "dogadjaj",
+            "otherEntityName": "uSali",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "naziv"
+        },
+        {
+            "relationshipName": "rezsed",
+            "otherEntityName": "rezervisanoSediste",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "rezsed"
         }
     ],
     "fields": [

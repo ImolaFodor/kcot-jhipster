@@ -14,7 +14,7 @@
             url: '/rezervisano-sediste?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Rezervisana sedišta'
+                pageTitle: 'RezervisanoSedistes'
             },
             views: {
                 'content@': {

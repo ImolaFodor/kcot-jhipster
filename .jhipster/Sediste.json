@@ -1,5 +1,12 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "sediste",
+            "otherEntityName": "rezervisanoSediste",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "sediste"
+        }
+    ],
     "fields": [
         {
             "fieldName": "red",

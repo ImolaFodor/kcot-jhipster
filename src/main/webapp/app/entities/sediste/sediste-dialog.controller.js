@@ -5,11 +5,12 @@
         .module('kcotApp')
         .controller('SedisteDialogController', SedisteDialogController);
 
-    SedisteDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Sediste'];
+    SedisteDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Sediste', 'RezervisanoSediste'];
 
-    function SedisteDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Sediste) {
+    function SedisteDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Sediste, RezervisanoSediste) {
         var vm = this;
         vm.sediste = entity;
+        vm.rezervisanosedistes = RezervisanoSediste.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

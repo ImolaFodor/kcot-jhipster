@@ -5,9 +5,9 @@
         .module('kcotApp')
         .controller('RezervacijaProdajaDetailController', RezervacijaProdajaDetailController);
 
-    RezervacijaProdajaDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'RezervacijaProdaja', 'Gost', 'Skola', 'USali', 'Zaposleni'];
+    RezervacijaProdajaDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'RezervacijaProdaja', 'Gost', 'Skola', 'Zaposleni', 'USali', 'RezervisanoSediste'];
 
-    function RezervacijaProdajaDetailController($scope, $rootScope, $stateParams, entity, RezervacijaProdaja, Gost, Skola, USali, Zaposleni) {
+    function RezervacijaProdajaDetailController($scope, $rootScope, $stateParams, entity, RezervacijaProdaja, Gost, Skola, Zaposleni, USali, RezervisanoSediste) {
         var vm = this;
         vm.rezervacijaProdaja = entity;
         

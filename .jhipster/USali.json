@@ -1,5 +1,12 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "dogadjaj",
+            "otherEntityName": "rezervacijaProdaja",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "dogadjaj"
+        }
+    ],
     "fields": [
         {
             "fieldName": "naziv",

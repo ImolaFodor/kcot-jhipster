@@ -31,7 +31,7 @@ public class RezervisanoSediste implements Serializable {
 
     @ManyToOne
     @NotNull
-    private RezervacijaProdaja rezervacijaProdaja;
+    private RezervacijaProdaja rezsed;
 
     public Long getId() {
         return id;
@@ -57,17 +57,20 @@ public class RezervisanoSediste implements Serializable {
         this.sediste = sediste;
     }
 
-    public RezervacijaProdaja getRezervacijaProdaja() {
-        return rezervacijaProdaja;
+    public RezervacijaProdaja getRezsed() {
+        return rezsed;
     }
 
-    public void setRezervacijaProdaja(RezervacijaProdaja rezervacijaProdaja) {
-        this.rezervacijaProdaja = rezervacijaProdaja;
+    public void setRezsed(RezervacijaProdaja rezervacijaProdaja) {
+        this.rezsed = rezervacijaProdaja;
     }
 
     public RezervisanoSediste(Sediste sediste, RezervacijaProdaja rezervacijaProdaja) {
         this.sediste = sediste;
-        this.rezervacijaProdaja = rezervacijaProdaja;
+        this.rezsed = rezervacijaProdaja;
+    }
+
+    public RezervisanoSediste() {
     }
 
     @Override

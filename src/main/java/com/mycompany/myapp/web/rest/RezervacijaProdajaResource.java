@@ -26,7 +26,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * REST controller for managing RezervacijaProdaja.
@@ -39,7 +38,6 @@ public class RezervacijaProdajaResource {
 
     @Inject
     private RezervacijaProdajaRepository rezervacijaProdajaRepository;
-
     @Inject
     private RezervisanoSedisteRepository rezervisanoSedisteRepository;
 
@@ -63,27 +61,33 @@ public class RezervacijaProdajaResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("rezervacijaProdaja", "idexists", "A new rezervacijaProdaja cannot already have an ID")).body(null);
         }
         RezervacijaProdaja result = rezervacijaProdajaRepository.save(rezervacijaProdaja);
-            /* int kolicina= result.getBroj_karata();
+
+        int kolicina= result.getBroj_karata();
 
         List<Sediste> sedista= sedisteRepository.findAll();
         List<RezervisanoSediste> rez_sedista= rezervisanoSedisteRepository.findAll();
         List<Sediste> zauzeta_sedista= new ArrayList();
 
-            for(RezervisanoSediste rs: rez_sedista){
-                if(rs.getRezervacijaProdaja().getUSali()==result.getUSali())
-                    zauzeta_sedista.add(rs.getSediste());
-            }
+        for(RezervisanoSediste rs: rez_sedista){
+            if(rs.getRezsed().getDogadjaj().equals(result.getDogadjaj()))
+                zauzeta_sedista.add(rs.getSediste());
+            System.out.println(rs.getSediste().getId());
+        }
+
         RezervisanoSediste rezervisanoSediste=null;
+        ArrayList<RezervisanoSediste> lrs= new ArrayList();
 
-            for(int i=0; i<kolicina; i++){
-                for(Sediste s: sedista){
-                    if(!zauzeta_sedista.contains(s.getId()) && zauzeta_sedista.size()!=sedista.size())
-                        rezervisanoSediste= new RezervisanoSediste(s, result);
-                    rezervisanoSedisteRepository.save(rezervisanoSediste);
-                }
-            }*/
+        for(Sediste s: sedista){
+            if(!zauzeta_sedista.contains(s) && (zauzeta_sedista.size()+kolicina)<=sedista.size()) {
+                rezervisanoSediste = new RezervisanoSediste(s, result);
+                lrs.add(rezervisanoSediste);
+                System.out.println(rezervisanoSediste.getSediste().getId());
+            }
+        }
 
-
+        for(int i=0; i<kolicina; i++){
+            rezervisanoSedisteRepository.save(lrs.get(i));
+        }
         return ResponseEntity.created(new URI("/api/rezervacija-prodajas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("rezervacijaProdaja", result.getId().toString()))
             .body(result);

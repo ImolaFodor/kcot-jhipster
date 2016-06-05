@@ -14,9 +14,9 @@
                                  referencedColumnNames="id"
                                  referencedTableName="sediste"/>
 
-        <addForeignKeyConstraint baseColumnNames="rezervacija_prodaja_id"
+        <addForeignKeyConstraint baseColumnNames="rezsed_id"
                                  baseTableName="rezervisano_sediste"
-                                 constraintName="fk_rezervisanosediste_rezervacijaprodaja_id"
+                                 constraintName="fk_rezervisanosediste_rezsed_id"
                                  referencedColumnNames="id"
                                  referencedTableName="rezervacija_prodaja"/>
 

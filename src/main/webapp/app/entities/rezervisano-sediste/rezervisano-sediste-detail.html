@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span>Rezervisano sedište</span> {{vm.rezervisanoSediste.id}}</h2>
+    <h2><span>Rezervisano Sediste</span> {{vm.rezervisanoSediste.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
@@ -8,13 +8,13 @@
         <dd>
             <span>{{vm.rezervisanoSediste.opis}}</span>
         </dd>
-        <dt><span>Sedište</span></dt>
+        <dt><span>Sediste</span></dt>
         <dd>
             <a ui-sref="sediste-detail({id:vm.rezervisanoSediste.sediste.id})">{{vm.rezervisanoSediste.sediste.id}}</a>
         </dd>
-        <dt><span>Rezervacija/prodaja</span></dt>
+        <dt><span>Rezsed</span></dt>
         <dd>
-            <a ui-sref="rezervacija-prodaja-detail({id:vm.rezervisanoSediste.rezervacijaProdaja.id})">{{vm.rezervisanoSediste.rezervacijaProdaja.id}}</a>
+            <a ui-sref="rezervacija-prodaja-detail({id:vm.rezervisanoSediste.rezsed.id})">{{vm.rezervisanoSediste.rezsed.id}}</a>
         </dd>
     </dl>
 

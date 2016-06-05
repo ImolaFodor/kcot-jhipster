@@ -1,5 +1,6 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -66,14 +67,19 @@ public class RezervacijaProdaja implements Serializable {
     private Skola skola;
 
     @ManyToOne
-    @NotNull
-    private USali uSali;
-
-    @ManyToOne
     private Zaposleni obavio_rez;
 
     @ManyToOne
     private Zaposleni obavio_prodaju;
+
+    @ManyToOne
+    @NotNull
+    private USali dogadjaj;
+
+    @OneToMany(mappedBy = "rezsed")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<RezervisanoSediste> rezseds = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -171,14 +177,6 @@ public class RezervacijaProdaja implements Serializable {
         this.skola = skola;
     }
 
-    public USali getUSali() {
-        return uSali;
-    }
-
-    public void setUSali(USali uSali) {
-        this.uSali = uSali;
-    }
-
     public Zaposleni getObavio_rez() {
         return obavio_rez;
     }
@@ -193,6 +191,22 @@ public class RezervacijaProdaja implements Serializable {
 
     public void setObavio_prodaju(Zaposleni zaposleni) {
         this.obavio_prodaju = zaposleni;
+    }
+
+    public USali getDogadjaj() {
+        return dogadjaj;
+    }
+
+    public void setDogadjaj(USali uSali) {
+        this.dogadjaj = uSali;
+    }
+
+    public Set<RezervisanoSediste> getRezseds() {
+        return rezseds;
+    }
+
+    public void setRezseds(Set<RezervisanoSediste> rezervisanoSedistes) {
+        this.rezseds = rezervisanoSedistes;
     }
 
     @Override

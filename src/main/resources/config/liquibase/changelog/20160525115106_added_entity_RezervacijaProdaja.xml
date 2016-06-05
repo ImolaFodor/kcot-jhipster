@@ -61,16 +61,16 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="u_sali_id" type="bigint">
-                <constraints nullable="false" />
-            </column>
-
             <column name="obavio_rez_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <column name="obavio_prodaju_id" type="bigint">
                 <constraints nullable="true" />
+            </column>
+
+            <column name="dogadjaj_id" type="bigint">
+                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->

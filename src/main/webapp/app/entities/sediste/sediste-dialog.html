@@ -4,7 +4,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="mySedisteLabel">Kreiraj ili modifikuj sedište</h4>
+        <h4 class="modal-title" id="mySedisteLabel">Create or edit a Sediste</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -21,11 +21,11 @@
             <div ng-show="editForm.red.$invalid">
                 <p class="help-block"
                     ng-show="editForm.red.$error.required">
-                    Ovo polje je obavezno.
+                    This field is required.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.red.$error.number">
-                    Ovo polje bi trebalo da je broj.
+                    This field should be a number.
                 </p>
             </div>
         </div>
@@ -37,11 +37,11 @@
             <div ng-show="editForm.broj.$invalid">
                 <p class="help-block"
                     ng-show="editForm.broj.$error.required">
-                    Ovo polje je obavezno.
+                    This field is required.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.broj.$error.number">
-                    Ovo polje bi trebalo da je broj.
+                    This field should be a number.
                 </p>
             </div>
         </div>
@@ -49,10 +49,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Otkaži</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Sačuvaj</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>
 </form>

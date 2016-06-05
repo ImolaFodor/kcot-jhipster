@@ -1,5 +1,6 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,6 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 import com.mycompany.myapp.domain.enumeration.StatusGal;
@@ -72,6 +75,11 @@ public class USali implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private StatusGal status;
+
+    @OneToMany(mappedBy = "dogadjaj")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<RezervacijaProdaja> dogadjajs = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -199,6 +207,14 @@ public class USali implements Serializable {
 
     public void setStatus(StatusGal status) {
         this.status = status;
+    }
+
+    public Set<RezervacijaProdaja> getDogadjajs() {
+        return dogadjajs;
+    }
+
+    public void setDogadjajs(Set<RezervacijaProdaja> rezervacijaProdajas) {
+        this.dogadjajs = rezervacijaProdajas;
     }
 
     @Override

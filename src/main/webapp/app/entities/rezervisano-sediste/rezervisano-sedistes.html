@@ -1,5 +1,5 @@
 <div>
-    <h2>Rezervisana sedišta</h2>
+    <h2>Rezervisano Sedistes</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="rezervisano-sediste.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Kreiraj novo rezervisano sedište
+                        Create new Rezervisano Sediste
                     </span>
                 </button>
             </div>
@@ -20,8 +20,8 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="opis"><span>Opis</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="sediste.id"><span>Sedište</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="rezervacijaProdaja.id"><span>Rezervacija/prodaja</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sediste.id"><span>Sediste</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rezsed.id"><span>Rezsed</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
                         <a ui-sref="sediste-detail({id:rezervisanoSediste.sediste.id})">{{rezervisanoSediste.sediste.id}}</a>
                     </td>
                     <td>
-                        <a ui-sref="rezervacija-prodaja-detail({id:rezervisanoSediste.rezervacijaProdaja.id})">{{rezervisanoSediste.rezervacijaProdaja.id}}</a>
+                        <a ui-sref="rezervacija-prodaja-detail({id:rezervisanoSediste.rezsed.id})">{{rezervisanoSediste.rezsed.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

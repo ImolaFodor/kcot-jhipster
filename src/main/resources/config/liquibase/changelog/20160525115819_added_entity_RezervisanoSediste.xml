@@ -29,7 +29,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="rezervacija_prodaja_id" type="bigint">
+            <column name="rezsed_id" type="bigint">
                 <constraints nullable="false" />
             </column>
 

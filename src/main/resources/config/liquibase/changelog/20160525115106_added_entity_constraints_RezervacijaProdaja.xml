@@ -25,12 +25,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="skola"/>
 
-        <addForeignKeyConstraint baseColumnNames="u_sali_id"
-                                 baseTableName="rezervacija_prodaja"
-                                 constraintName="fk_rezervacijaprodaja_usali_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="u_sali"/>
-
         <addForeignKeyConstraint baseColumnNames="obavio_rez_id"
                                  baseTableName="rezervacija_prodaja"
                                  constraintName="fk_rezervacijaprodaja_obavio_rez_id"
@@ -42,6 +36,12 @@
                                  constraintName="fk_rezervacijaprodaja_obavio_prodaju_id"
                                  referencedColumnNames="id"
                                  referencedTableName="zaposleni"/>
+
+        <addForeignKeyConstraint baseColumnNames="dogadjaj_id"
+                                 baseTableName="rezervacija_prodaja"
+                                 constraintName="fk_rezervacijaprodaja_dogadjaj_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="u_sali"/>
 
     </changeSet>
 </databaseChangeLog>
