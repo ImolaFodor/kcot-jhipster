@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.UGaleriji;
+import com.mycompany.myapp.domain.enumeration.StatusGal;
 import com.mycompany.myapp.repository.UGalerijiRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
@@ -19,8 +20,10 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing UGaleriji.
@@ -30,10 +33,10 @@ import java.util.Optional;
 public class UGalerijiResource {
 
     private final Logger log = LoggerFactory.getLogger(UGalerijiResource.class);
-        
+
     @Inject
     private UGalerijiRepository uGalerijiRepository;
-    
+
     /**
      * POST  /u-galerijis : Create a new uGaleriji.
      *
@@ -94,7 +97,7 @@ public class UGalerijiResource {
     public ResponseEntity<List<UGaleriji>> getAllUGalerijis(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of UGalerijis");
-        Page<UGaleriji> page = uGalerijiRepository.findAll(pageable); 
+        Page<UGaleriji> page = uGalerijiRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/u-galerijis");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

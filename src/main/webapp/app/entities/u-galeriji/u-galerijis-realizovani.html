@@ -1,0 +1,52 @@
+<div>
+    <h2>Događaji u galeriji {{bla}}</h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive">
+
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse">
+                <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="naziv"><span>Naziv</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="poslovna_godina"><span translate="kcotApp.uGaleriji.poslovna_godina">Poslovna godina</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="kontakt_ime"><span translate="kcotApp.uGaleriji.kontakt_ime">Kontakt ime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="kontakt_prz"><span translate="kcotApp.uGaleriji.kontakt_prz">Kontakt prezime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="kontakt_broj"><span translate="kcotApp.uGaleriji.kontakt_broj">Kontakt broj</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="posecenost"><span>Posećenost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="tip"><span>Tip</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="datum"><span>Datum</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="uGaleriji in vm.uGalerijis">
+
+                <td><a ui-sref="u-galeriji-detail({id:uGaleriji.id})">{{uGaleriji.id}}</a></td>
+                <td>{{uGaleriji.naziv}}</td>
+                <td>{{uGaleriji.poslovna_godina}}</td>
+                <td>{{uGaleriji.kontakt_ime}}</td>
+                <td>{{uGaleriji.kontakt_prz}}</td>
+                <td>{{uGaleriji.kontakt_broj}}</td>
+                <td>{{uGaleriji.posecenost}}</td>
+                <td translate="{{'kcotApp.Tip.' + uGaleriji.tip}}">{{uGaleriji.tip}}</td>
+                <td>{{uGaleriji.datum | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="u-galeriji-detail({id:uGaleriji.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-xs hidden-sm"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

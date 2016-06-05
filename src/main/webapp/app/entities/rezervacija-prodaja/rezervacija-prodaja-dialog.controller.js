@@ -31,9 +31,11 @@
 
         vm.save = function () {
             vm.isSaving = true;
+            console.log(vm.rezervacijaProdaja);
             if (vm.rezervacijaProdaja.id !== null) {
                 RezervacijaProdaja.update(vm.rezervacijaProdaja, onSaveSuccess, onSaveError);
             } else {
+
                 RezervacijaProdaja.save(vm.rezervacijaProdaja, onSaveSuccess, onSaveError);
             }
         };

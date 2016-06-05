@@ -24,4 +24,23 @@
             'update': { method:'PUT' }
         });
     }
+
+    function UGalerijiRealizovani ($resource, DateUtils) {
+        var resourceUrl =  'api/u-galerijis-realizovani/:id';
+
+        return $resource(resourceUrl, {}, {
+            'query': { method: 'GET', isArray: true},
+            'get': {
+                method: 'GET',
+                transformResponse: function (data) {
+                    if (data) {
+                        data = angular.fromJson(data);
+                        data.datum = DateUtils.convertDateTimeFromServer(data.datum);
+                    }
+                    return data;
+                }
+            },
+            'update': { method:'PUT' }
+        });
+    }
 })();

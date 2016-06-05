@@ -14,7 +14,7 @@
             url: '/u-sali?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'U sali'
+                pageTitle: 'USalis'
             },
             views: {
                 'content@': {

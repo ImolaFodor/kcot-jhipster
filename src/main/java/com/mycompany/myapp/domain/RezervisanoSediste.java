@@ -65,6 +65,11 @@ public class RezervisanoSediste implements Serializable {
         this.rezervacijaProdaja = rezervacijaProdaja;
     }
 
+    public RezervisanoSediste(Sediste sediste, RezervacijaProdaja rezervacijaProdaja) {
+        this.sediste = sediste;
+        this.rezervacijaProdaja = rezervacijaProdaja;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

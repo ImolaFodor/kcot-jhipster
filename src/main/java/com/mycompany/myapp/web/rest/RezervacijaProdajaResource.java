@@ -2,7 +2,11 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.RezervacijaProdaja;
+import com.mycompany.myapp.domain.RezervisanoSediste;
+import com.mycompany.myapp.domain.Sediste;
 import com.mycompany.myapp.repository.RezervacijaProdajaRepository;
+import com.mycompany.myapp.repository.RezervisanoSedisteRepository;
+import com.mycompany.myapp.repository.SedisteRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -19,8 +23,10 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing RezervacijaProdaja.
@@ -30,10 +36,16 @@ import java.util.Optional;
 public class RezervacijaProdajaResource {
 
     private final Logger log = LoggerFactory.getLogger(RezervacijaProdajaResource.class);
-        
+
     @Inject
     private RezervacijaProdajaRepository rezervacijaProdajaRepository;
-    
+
+    @Inject
+    private RezervisanoSedisteRepository rezervisanoSedisteRepository;
+
+    @Inject
+    private SedisteRepository sedisteRepository;
+
     /**
      * POST  /rezervacija-prodajas : Create a new rezervacijaProdaja.
      *
@@ -51,6 +63,27 @@ public class RezervacijaProdajaResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("rezervacijaProdaja", "idexists", "A new rezervacijaProdaja cannot already have an ID")).body(null);
         }
         RezervacijaProdaja result = rezervacijaProdajaRepository.save(rezervacijaProdaja);
+            /* int kolicina= result.getBroj_karata();
+
+        List<Sediste> sedista= sedisteRepository.findAll();
+        List<RezervisanoSediste> rez_sedista= rezervisanoSedisteRepository.findAll();
+        List<Sediste> zauzeta_sedista= new ArrayList();
+
+            for(RezervisanoSediste rs: rez_sedista){
+                if(rs.getRezervacijaProdaja().getUSali()==result.getUSali())
+                    zauzeta_sedista.add(rs.getSediste());
+            }
+        RezervisanoSediste rezervisanoSediste=null;
+
+            for(int i=0; i<kolicina; i++){
+                for(Sediste s: sedista){
+                    if(!zauzeta_sedista.contains(s.getId()) && zauzeta_sedista.size()!=sedista.size())
+                        rezervisanoSediste= new RezervisanoSediste(s, result);
+                    rezervisanoSedisteRepository.save(rezervisanoSediste);
+                }
+            }*/
+
+
         return ResponseEntity.created(new URI("/api/rezervacija-prodajas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("rezervacijaProdaja", result.getId().toString()))
             .body(result);
@@ -94,7 +127,7 @@ public class RezervacijaProdajaResource {
     public ResponseEntity<List<RezervacijaProdaja>> getAllRezervacijaProdajas(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of RezervacijaProdajas");
-        Page<RezervacijaProdaja> page = rezervacijaProdajaRepository.findAll(pageable); 
+        Page<RezervacijaProdaja> page = rezervacijaProdajaRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/rezervacija-prodajas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
