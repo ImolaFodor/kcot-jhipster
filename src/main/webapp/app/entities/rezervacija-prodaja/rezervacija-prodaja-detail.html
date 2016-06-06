@@ -1,10 +1,10 @@
 
 <div>
-    <h2><span>Rezervacija Prodaja</span> {{vm.rezervacijaProdaja.id}}</h2>
+    <h2><span>Rezervacija/Prodaja</span> {{vm.rezervacijaProdaja.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span translate="kcotApp.rezervacijaProdaja.rezervisao_ime">Rezervisao Ime</span></dt>
+        <dt><span translate="kcotApp.rezervacijaProdaja.rezervisao_ime">Rezervacija na ime: </span></dt>
         <dd>
             <span>{{vm.rezervacijaProdaja.rezervisao_ime}}</span>
         </dd>
@@ -12,15 +12,15 @@
         <dd>
             <span>{{vm.rezervacijaProdaja.cena}}</span>
         </dd>
-        <dt><span translate="kcotApp.rezervacijaProdaja.broj_karata">Broj Karata</span></dt>
+        <dt><span translate="kcotApp.rezervacijaProdaja.broj_karata">Broj karata</span></dt>
         <dd>
             <span>{{vm.rezervacijaProdaja.broj_karata}}</span>
         </dd>
-        <dt><span translate="kcotApp.rezervacijaProdaja.br_male_dece">Br Male Dece</span></dt>
+        <dt><span translate="kcotApp.rezervacijaProdaja.br_male_dece">Br male dece</span></dt>
         <dd>
             <span>{{vm.rezervacijaProdaja.br_male_dece}}</span>
         </dd>
-        <dt><span translate="kcotApp.rezervacijaProdaja.br_velike_dece">Br Velike Dece</span></dt>
+        <dt><span translate="kcotApp.rezervacijaProdaja.br_velike_dece">Br velike dece</span></dt>
         <dd>
             <span>{{vm.rezervacijaProdaja.br_velike_dece}}</span>
         </dd>
@@ -28,7 +28,7 @@
         <dd>
             <span>{{vm.rezervacijaProdaja.firma}}</span>
         </dd>
-        <dt><span translate="kcotApp.rezervacijaProdaja.aktivna_rez">Aktivna Rez</span></dt>
+        <dt><span translate="kcotApp.rezervacijaProdaja.aktivna_rez">Aktivno</span></dt>
         <dd>
             <span>{{vm.rezervacijaProdaja.aktivna_rez}}</span>
         </dd>
@@ -36,7 +36,7 @@
         <dd>
             <span>{{vm.rezervacijaProdaja.opis}}</span>
         </dd>
-        <dt><span translate="kcotApp.rezervacijaProdaja.status_rez_prod">Status Rez Prod</span></dt>
+        <dt><span translate="kcotApp.rezervacijaProdaja.status_rez_prod">Status</span></dt>
         <dd>
             <span translate="{{'kcotApp.StatusRezProd.' + vm.rezervacijaProdaja.status_rez_prod}}">{{vm.rezervacijaProdaja.status_rez_prod}}</span>
         </dd>
@@ -50,15 +50,15 @@
         <dd>
             <a ui-sref="skola-detail({id:vm.rezervacijaProdaja.skola.id})">{{vm.rezervacijaProdaja.skola.naziv}}</a>
         </dd>
-        <dt><span translate="kcotApp.rezervacijaProdaja.obavio_rez">Obavio Rez</span></dt>
+        <dt><span translate="kcotApp.rezervacijaProdaja.obavio_rez">Rezervaciju obavio: </span></dt>
         <dd>
             <a ui-sref="zaposleni-detail({id:vm.rezervacijaProdaja.obavio_rez.id})">{{vm.rezervacijaProdaja.obavio_rez.ime}}</a>
         </dd>
-        <dt><span translate="kcotApp.rezervacijaProdaja.obavio_prodaju">Obavio Prodaju</span></dt>
+        <dt><span translate="kcotApp.rezervacijaProdaja.obavio_prodaju">Prodaju obavio: </span></dt>
         <dd>
             <a ui-sref="zaposleni-detail({id:vm.rezervacijaProdaja.obavio_prodaju.id})">{{vm.rezervacijaProdaja.obavio_prodaju.ime}}</a>
         </dd>
-        <dt><span>Dogadjaj</span></dt>
+        <dt><span>Događaj</span></dt>
         <dd>
             <a ui-sref="u-sali-detail({id:vm.rezervacijaProdaja.dogadjaj.id})">{{vm.rezervacijaProdaja.dogadjaj.naziv}}</a>
         </dd>
@@ -67,6 +67,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Nazad</span>
     </button>
 </div>

@@ -4,7 +4,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myRezervacijaProdajaLabel">Create or edit a Rezervacija Prodaja</h4>
+        <h4 class="modal-title" id="myRezervacijaProdajaLabel">Kreirajte ili modifikujte</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -14,7 +14,7 @@
                     ng-model="vm.rezervacijaProdaja.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.rezervacijaProdaja.rezervisao_ime" for="field_rezervisao_ime">Rezervisao Ime</label>
+            <label class="control-label" translate="kcotApp.rezervacijaProdaja.rezervisao_ime" for="field_rezervisao_ime">Rezervacija na ime: </label>
             <input type="text" class="form-control" name="rezervisao_ime" id="field_rezervisao_ime"
                     ng-model="vm.rezervacijaProdaja.rezervisao_ime"
                      />
@@ -26,19 +26,19 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.rezervacijaProdaja.broj_karata" for="field_broj_karata">Broj Karata</label>
+            <label class="control-label" translate="kcotApp.rezervacijaProdaja.broj_karata" for="field_broj_karata">Broj karata</label>
             <input type="number" class="form-control" name="broj_karata" id="field_broj_karata"
                     ng-model="vm.rezervacijaProdaja.broj_karata"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.rezervacijaProdaja.br_male_dece" for="field_br_male_dece">Br Male Dece</label>
+            <label class="control-label" translate="kcotApp.rezervacijaProdaja.br_male_dece" for="field_br_male_dece">Br male dece</label>
             <input type="number" class="form-control" name="br_male_dece" id="field_br_male_dece"
                     ng-model="vm.rezervacijaProdaja.br_male_dece"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.rezervacijaProdaja.br_velike_dece" for="field_br_velike_dece">Br Velike Dece</label>
+            <label class="control-label" translate="kcotApp.rezervacijaProdaja.br_velike_dece" for="field_br_velike_dece">Br velike dece</label>
             <input type="number" class="form-control" name="br_velike_dece" id="field_br_velike_dece"
                     ng-model="vm.rezervacijaProdaja.br_velike_dece"
                      />
@@ -50,7 +50,7 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.rezervacijaProdaja.aktivna_rez" for="field_aktivna_rez">Aktivna Rez</label>
+            <label class="control-label" translate="kcotApp.rezervacijaProdaja.aktivna_rez" for="field_aktivna_rez">Aktivno</label>
             <input type="checkbox" class="form-control" name="aktivna_rez" id="field_aktivna_rez"
                     ng-model="vm.rezervacijaProdaja.aktivna_rez"
                      />
@@ -62,7 +62,7 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kcotApp.rezervacijaProdaja.status_rez_prod" for="field_status_rez_prod">Status Rez Prod</label>
+            <label class="control-label" translate="kcotApp.rezervacijaProdaja.status_rez_prod" for="field_status_rez_prod">Status</label>
             <select class="form-control" name="status_rez_prod" ng-model="vm.rezervacijaProdaja.status_rez_prod" id="field_status_rez_prod" required>
                 <option value="REZERVISANO">REZERVISANO</option>
                 <option value="PRODATO">PRODATO</option>
@@ -70,7 +70,7 @@
             <div ng-show="editForm.status_rez_prod.$invalid">
                 <p class="help-block"
                     ng-show="editForm.status_rez_prod.$error.required">
-                    This field is required.
+                    Ovo polje je obavezno.
                 </p>
             </div>
         </div>
@@ -86,19 +86,19 @@
             </select>
         </div>
         <div class="form-group">
-            <label translate="kcotApp.rezervacijaProdaja.obavio_rez" for="field_obavio_rez">Obavio Rez</label>
+            <label translate="kcotApp.rezervacijaProdaja.obavio_rez" for="field_obavio_rez">Rezervaciju obavio: </label>
             <select class="form-control" id="field_obavio_rez" name="obavio_rez" ng-model="vm.rezervacijaProdaja.obavio_rez" ng-options="zaposleni as zaposleni.ime for zaposleni in vm.zaposlenis track by zaposleni.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label translate="kcotApp.rezervacijaProdaja.obavio_prodaju" for="field_obavio_prodaju">Obavio Prodaju</label>
+            <label translate="kcotApp.rezervacijaProdaja.obavio_prodaju" for="field_obavio_prodaju">Prodaju obavio: </label>
             <select class="form-control" id="field_obavio_prodaju" name="obavio_prodaju" ng-model="vm.rezervacijaProdaja.obavio_prodaju" ng-options="zaposleni as zaposleni.ime for zaposleni in vm.zaposlenis track by zaposleni.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_dogadjaj">Dogadjaj</label>
+            <label for="field_dogadjaj">Događaj</label>
             <select class="form-control" id="field_dogadjaj" name="dogadjaj" ng-model="vm.rezervacijaProdaja.dogadjaj" ng-options="uSali as uSali.naziv for uSali in vm.usalis track by uSali.id" required>
                 <option value=""></option>
             </select>
@@ -106,16 +106,16 @@
         <div ng-show="editForm.dogadjaj.$invalid">
             <p class="help-block"
                 ng-show="editForm.dogadjaj.$error.required">
-                This field is required.
+                Ovo polje je obavezno.
             </p>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Odustani</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Sačuvaj</span>
         </button>
     </div>
 </form>
